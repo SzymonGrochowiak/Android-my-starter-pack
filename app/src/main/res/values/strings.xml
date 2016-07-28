@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AndroidStarterPack</string>
+    <string name="app_name">Android Starter Pack</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
