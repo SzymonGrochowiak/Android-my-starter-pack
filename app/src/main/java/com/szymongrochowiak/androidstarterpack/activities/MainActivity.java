@@ -64,22 +64,8 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        mApiManager.getPokemon(new Random().nextInt(100)).subscribe(new Subscriber<String>() {
-            @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                mTextView.setText(e.getMessage());
-            }
-
-            @Override
-            public void onNext(String s) {
-                mTextView.setText(s);
-            }
-        });
+        mApiManager.getPokemon(new Random().nextInt(100))
+                .subscribe(s -> mTextView.setText(s), throwable -> mTextView.setText(throwable.getMessage()));
     }
 
     @Override

@@ -35,12 +35,7 @@ public class StarterPackApplication extends Application {
     }
 
     private void initRxJava() {
-        RxJavaHooks.setOnError(new Action1<Throwable>() {
-            @Override
-            public void call(Throwable throwable) {
-                Timber.e(throwable, "RxError");
-            }
-        });
+        RxJavaHooks.setOnError(throwable -> Timber.e(throwable, "RxError"));
     }
 
     public ApplicationComponent getDaggerApplicationComponent() {
