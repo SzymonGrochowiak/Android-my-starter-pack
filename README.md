@@ -82,6 +82,8 @@ Will be updated soon. Need to check if it can be easily replaced by the new Java
 ### RxAndroid:
 <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.reactivex%22%20AND%20a%3A%22rxandroid%22'><img src='https://img.shields.io/maven-central/v/io.reactivex/rxandroid.svg'></a>
 
+### [RxJavaDebug] (https://github.com/ReactiveX/RxJavaDebug)
+
 ### [RxBinding] (https://github.com/JakeWharton/RxBinding):
 <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.jakewharton.rxbinding%22'><img src='https://img.shields.io/maven-central/v/com.jakewharton.rxbinding/rxbinding.svg'></a>
 
