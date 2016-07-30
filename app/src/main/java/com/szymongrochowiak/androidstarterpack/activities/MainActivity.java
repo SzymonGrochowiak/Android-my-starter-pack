@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.szymongrochowiak.androidstarterpack.ApiManager;
 import com.szymongrochowiak.androidstarterpack.R;
 import com.szymongrochowiak.androidstarterpack.StarterPackApplication;
+import com.szymongrochowiak.androidstarterpack.activities.base.BaseActivity;
 
 import java.util.Random;
 
@@ -26,7 +27,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx.Subscriber;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Inject
