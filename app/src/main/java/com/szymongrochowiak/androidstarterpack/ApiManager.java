@@ -2,8 +2,9 @@ package com.szymongrochowiak.androidstarterpack;
 
 import android.support.annotation.NonNull;
 
+import com.szymongrochowiak.androidstarterpack.models.Berry;
+
 import rx.Observable;
-import rx.Scheduler;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -18,7 +19,9 @@ public class ApiManager {
         mApiInterface = apiInterface;
     }
 
-    public Observable<String> getPokemon(int id) {
-        return mApiInterface.getPokemon(id).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    public Observable<Berry> getBerry(int id) {
+        return mApiInterface.getBerry(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 }

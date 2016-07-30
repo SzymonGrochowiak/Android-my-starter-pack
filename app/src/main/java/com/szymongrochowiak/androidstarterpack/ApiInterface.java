@@ -1,5 +1,7 @@
 package com.szymongrochowiak.androidstarterpack;
 
+import com.szymongrochowiak.androidstarterpack.models.Berry;
+
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import rx.Observable;
@@ -9,6 +11,6 @@ import rx.Observable;
  */
 public interface ApiInterface {
 
-    @GET("pokemon/{id}")
-    Observable<String> getPokemon(@Path("id") int id);
+    @GET("berry/{id}")
+    Observable<Berry> getBerry(@Path("id") int id);
 }
