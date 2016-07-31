@@ -44,9 +44,10 @@ compile 'com.android.support:support-v4:24.1.1'
 'compile com.android.support:multidex:1.0.1'
 ```
 
-## Retrolambda
+## [Retrolambda] (https://github.com/evant/gradle-retrolambda) 
+<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22me.tatarka%22%20AND%20a%3A%22gradle-retrolambda%22'><img src='https://img.shields.io/maven-central/v/me.tatarka/gradle-retrolambda.svg?maxAge=28800'></a>
 
-Will be updated soon. Need to check if it can be easily replaced by the new Java 8 integration system without conflicts with Dagger 2.
+
 
 ## RxJava
 
