@@ -12,20 +12,20 @@ As far as everybody knows there are many collections and sets that are available
 
 # Libraries
 
-| Name | Version |
-|---|---|
-| [Dagger 2] (#dagger-2) | <a href='http://search.maven.org/#search%7Cga%7C1%7Cdagger'><img src='https://img.shields.io/maven-central/v/com.google.dagger/dagger.svg?maxAge=28800'></a>|
-| [Retrolambda] (#retrolambda) | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22me.tatarka%22%20AND%20a%3A%22gradle-retrolambda%22'><img src='https://img.shields.io/maven-central/v/me.tatarka/gradle-retrolambda.svg?maxAge=28800'></a> |
-| [RxJava] (#rxjava) | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.reactivex%22%20AND%20a%3A%22rxjava%22'><img src='https://img.shields.io/maven-central/v/io.reactivex/rxjava.svg?maxAge=28800'></a> |
-| [RxAndroid] (#rxandroid) | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.reactivex%22%20AND%20a%3A%22rxandroid%22'><img src='https://img.shields.io/maven-central/v/io.reactivex/rxandroid.svg?maxAge=28800'></a> |
-| [Retrofit] (#retrofit) | <a href='http://search.maven.org/#search%7Cga%7C1%7Cretrofit'><img src='https://img.shields.io/maven-central/v/com.squareup.retrofit2/retrofit.svg?maxAge=28800'></a> |
-| [Retrofit GSON converter] (#gson-converter) | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.retrofit2%22%20AND%20a%3A%22converter-gson%22'><img src='https://img.shields.io/maven-central/v/com.squareup.retrofit2/converter-gson.svg?maxAge=28800'></a> |
-| [RxJava adapter] (#rxjava-adapter) | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.retrofit2%22%20AND%20a%3A%22adapter-rxjava%22'><img src='https://img.shields.io/maven-central/v/com.squareup.retrofit2/adapter-rxjava.svg?maxAge=28800'></a> |
-| [OkHttp] (#okhttp) | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.okhttp3%22%20'><img src='https://img.shields.io/maven-central/v/com.squareup.okhttp3/okhttp.svg?maxAge=28800'></a> |
-| [OkHttp Logger] (#http-logger) | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.okhttp3%22%20AND%20a%3A%22logging-interceptor%22'><img src='https://img.shields.io/maven-central/v/com.squareup.okhttp3/logging-interceptor.svg?maxAge=28800'></a> |
-| [GSON] (#gson) | <a href='http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.google.code.gson%22%20AND%20a%3A%22gson%22'><img src='https://img.shields.io/maven-central/v/com.google.code.gson/gson.svg?maxAge=28800'></a> |
-| [Timber] (#timber) | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.jakewharton.timber%22'><img src='https://img.shields.io/maven-central/v/com.jakewharton.timber/timber.svg?maxAge=28800'></a> |
-| [Butterknife] (#butterknife) | <a href='http://search.maven.org/#search%7Cga%7C1%7Cbutterknife'><img src='https://img.shields.io/maven-central/v/com.jakewharton/butterknife.svg?maxAge=28800'></a> |
+| Name | Project site | Version |
+|---|---|---|
+| [Dagger 2] (#dagger-2) | http://google.github.io/dagger/ |<a href='http://search.maven.org/#search%7Cga%7C1%7Cdagger'><img src='https://img.shields.io/maven-central/v/com.google.dagger/dagger.svg?maxAge=28800'></a>|
+| [Retrolambda] (#retrolambda) | https://github.com/evant/gradle-retrolambda | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22me.tatarka%22%20AND%20a%3A%22gradle-retrolambda%22'><img src='https://img.shields.io/maven-central/v/me.tatarka/gradle-retrolambda.svg?maxAge=28800'></a> |
+| [RxJava] (#rxjava) | https://github.com/ReactiveX/RxJava | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.reactivex%22%20AND%20a%3A%22rxjava%22'><img src='https://img.shields.io/maven-central/v/io.reactivex/rxjava.svg?maxAge=28800'></a> |
+| [RxAndroid] (#rxandroid) | https://github.com/ReactiveX/RxAndroid | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.reactivex%22%20AND%20a%3A%22rxandroid%22'><img src='https://img.shields.io/maven-central/v/io.reactivex/rxandroid.svg?maxAge=28800'></a> |
+| [Retrofit] (#retrofit) | http://square.github.io/retrofit/ | <a href='http://search.maven.org/#search%7Cga%7C1%7Cretrofit'><img src='https://img.shields.io/maven-central/v/com.squareup.retrofit2/retrofit.svg?maxAge=28800'></a> |
+| [Retrofit GSON converter] (#gson-converter) | - | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.retrofit2%22%20AND%20a%3A%22converter-gson%22'><img src='https://img.shields.io/maven-central/v/com.squareup.retrofit2/converter-gson.svg?maxAge=28800'></a> |
+| [RxJava adapter] (#rxjava-adapter) | - | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.retrofit2%22%20AND%20a%3A%22adapter-rxjava%22'><img src='https://img.shields.io/maven-central/v/com.squareup.retrofit2/adapter-rxjava.svg?maxAge=28800'></a> |
+| [OkHttp] (#okhttp) | http://square.github.io/okhttp/ | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.okhttp3%22%20'><img src='https://img.shields.io/maven-central/v/com.squareup.okhttp3/okhttp.svg?maxAge=28800'></a> |
+| [OkHttp Logger] (#http-logger) | - | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.okhttp3%22%20AND%20a%3A%22logging-interceptor%22'><img src='https://img.shields.io/maven-central/v/com.squareup.okhttp3/logging-interceptor.svg?maxAge=28800'></a> |
+| [GSON] (#gson) | https://github.com/google/gson | <a href='http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.google.code.gson%22%20AND%20a%3A%22gson%22'><img src='https://img.shields.io/maven-central/v/com.google.code.gson/gson.svg?maxAge=28800'></a> |
+| [Timber] (#timber) | https://github.com/JakeWharton/timber | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.jakewharton.timber%22'><img src='https://img.shields.io/maven-central/v/com.jakewharton.timber/timber.svg?maxAge=28800'></a> |
+| [Butterknife] (#butterknife) | http://jakewharton.github.io/butterknife/ | <a href='http://search.maven.org/#search%7Cga%7C1%7Cbutterknife'><img src='https://img.shields.io/maven-central/v/com.jakewharton/butterknife.svg?maxAge=28800'></a> |
 
 
 # License
