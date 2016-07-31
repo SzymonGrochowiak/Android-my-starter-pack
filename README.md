@@ -12,9 +12,8 @@ As far as everybody knows there are many collections and sets that are available
 
 # Libraries
 
-## [Dagger 2] (https://github.com/google/dagger)
+## [Dagger 2] (https://github.com/google/dagger) <a href='http://search.maven.org/#search%7Cga%7C1%7Cdagger'><img src='https://img.shields.io/maven-central/v/com.google.dagger/dagger.svg?maxAge=28800'></a>
 
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cdagger'><img src='https://img.shields.io/maven-central/v/com.google.dagger/dagger.svg'></a>
 
 ## [Google Play Services] (https://developers.google.com/android/guides/setup)
 
@@ -23,32 +22,7 @@ As far as everybody knows there are many collections and sets that are available
 compile 'com.google.android.gms:play-services:9.2.1'
 ```
 
-### Separeted dependencies:
-```groovy
-compile 'com.google.android.gms:play-services-plus:9.2.1'
-compile 'com.google.android.gms:play-services-auth:9.2.1'
-compile 'com.google.android.gms:play-services-base:9.2.1'
-compile 'com.google.android.gms:play-services-identity:9.2.1'
-compile 'com.google.android.gms:play-services-appindexing:9.2.1'
-compile 'com.google.android.gms:play-services-appinvite:9.2.1'
-compile 'com.google.android.gms:play-services-analytics:9.2.1'
-compile 'com.google.android.gms:play-services-contextmanager:9.2.1'
-compile 'com.google.android.gms:play-services-cast:9.2.1'
-compile 'com.google.android.gms:play-services-gcm:9.2.1'
-compile 'com.google.android.gms:play-services-drive:9.2.1'
-compile 'com.google.android.gms:play-services-fitness:9.2.1'
-compile 'com.google.android.gms:play-services-location:9.2.1'
-compile 'com.google.android.gms:play-services-maps:9.2.1'
-compile 'com.google.android.gms:play-services-ads:9.2.1'
-compile 'com.google.android.gms:play-services-places:9.2.1'
-compile 'com.google.android.gms:play-services-vision:9.2.1'
-compile 'com.google.android.gms:play-services-nearby:9.2.1'
-compile 'com.google.android.gms:play-services-panorama:9.2.1'
-compile 'com.google.android.gms:play-services-games:9.2.1'
-compile 'com.google.android.gms:play-services-safetynet:9.2.1'
-compile 'com.google.android.gms:play-services-wallet:9.2.1'
-compile 'com.google.android.gms:play-services-wearable:9.2.1'
-```
+### Separeted dependencies: https://developers.google.com/android/guides/setup
 
 ## Support libraries
 ```groovy
@@ -77,49 +51,49 @@ Will be updated soon. Need to check if it can be easily replaced by the new Java
 ## RxJava
 
 ### Core:
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.reactivex%22%20AND%20a%3A%22rxjava%22'><img src='https://img.shields.io/maven-central/v/io.reactivex/rxjava.svg'></a>
+<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.reactivex%22%20AND%20a%3A%22rxjava%22'><img src='https://img.shields.io/maven-central/v/io.reactivex/rxjava.svg?maxAge=28800'></a>
 
 ### RxAndroid:
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.reactivex%22%20AND%20a%3A%22rxandroid%22'><img src='https://img.shields.io/maven-central/v/io.reactivex/rxandroid.svg'></a>
+<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.reactivex%22%20AND%20a%3A%22rxandroid%22'><img src='https://img.shields.io/maven-central/v/io.reactivex/rxandroid.svg?maxAge=28800'></a>
 
 ### [RxJavaDebug] (https://github.com/ReactiveX/RxJavaDebug)
 
 ### [RxBinding] (https://github.com/JakeWharton/RxBinding):
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.jakewharton.rxbinding%22'><img src='https://img.shields.io/maven-central/v/com.jakewharton.rxbinding/rxbinding.svg'></a>
+<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.jakewharton.rxbinding%22'><img src='https://img.shields.io/maven-central/v/com.jakewharton.rxbinding/rxbinding.svg?maxAge=28800'></a>
 
 ## [Retrofit] (http://square.github.io/retrofit/)
 
 ### Core:
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cretrofit'><img src='https://img.shields.io/maven-central/v/com.squareup.retrofit2/retrofit.svg'></a>
+<a href='http://search.maven.org/#search%7Cga%7C1%7Cretrofit'><img src='https://img.shields.io/maven-central/v/com.squareup.retrofit2/retrofit.svg?maxAge=28800'></a>
 
 ### JSON converter - GSON:
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.retrofit2%22%20AND%20a%3A%22converter-gson%22'><img src='https://img.shields.io/maven-central/v/com.squareup.retrofit2/converter-gson.svg'></a>
+<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.retrofit2%22%20AND%20a%3A%22converter-gson%22'><img src='https://img.shields.io/maven-central/v/com.squareup.retrofit2/converter-gson.svg?maxAge=28800'></a>
 
 ### XML converter - Simple XML:
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.retrofit2%22%20AND%20a%3A%22converter-simplexml%22'><img src='https://img.shields.io/maven-central/v/com.squareup.retrofit2/converter-simplexml.svg'></a>
+<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.retrofit2%22%20AND%20a%3A%22converter-simplexml%22'><img src='https://img.shields.io/maven-central/v/com.squareup.retrofit2/converter-simplexml.svg?maxAge=28800'></a>
 
 ### RXJava adapter:
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.retrofit2%22%20AND%20a%3A%22adapter-rxjava%22'><img src='https://img.shields.io/maven-central/v/com.squareup.retrofit2/adapter-rxjava.svg'></a>
+<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.retrofit2%22%20AND%20a%3A%22adapter-rxjava%22'><img src='https://img.shields.io/maven-central/v/com.squareup.retrofit2/adapter-rxjava.svg?maxAge=28800'></a>
 
 ## [OkHttp] (http://square.github.io/okhttp/)
 
 ### Core:
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.okhttp3%22%20'><img src='https://img.shields.io/maven-central/v/com.squareup.okhttp3/okhttp.svg'></a>
+<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.okhttp3%22%20'><img src='https://img.shields.io/maven-central/v/com.squareup.okhttp3/okhttp.svg?maxAge=28800'></a>
 
 ### Http Logger:
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.okhttp3%22%20AND%20a%3A%22logging-interceptor%22'><img src='https://img.shields.io/maven-central/v/com.squareup.okhttp3/logging-interceptor.svg'></a>
+<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.okhttp3%22%20AND%20a%3A%22logging-interceptor%22'><img src='https://img.shields.io/maven-central/v/com.squareup.okhttp3/logging-interceptor.svg?maxAge=28800'></a>
 
 ## [Parceler] (http://parceler.org/)
 
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.parceler%22'><img src='https://img.shields.io/maven-central/v/org.parceler/parceler.svg'></a>
+<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.parceler%22'><img src='https://img.shields.io/maven-central/v/org.parceler/parceler.svg?maxAge=28800'></a>
 
 ## [Otto Event Bus] (http://square.github.io/otto/)
 
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup%22%20AND%20a%3A%22otto%22'><img src='https://img.shields.io/maven-central/v/com.squareup/otto.svg'></a>
+<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup%22%20AND%20a%3A%22otto%22'><img src='https://img.shields.io/maven-central/v/com.squareup/otto.svg?maxAge=28800'></a>
 
 ## [Timber] (https://github.com/JakeWharton/timber)
 
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.jakewharton.timber%22'><img src='https://img.shields.io/maven-central/v/com.jakewharton.timber/timber.svg'></a>
+<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.jakewharton.timber%22'><img src='https://img.shields.io/maven-central/v/com.jakewharton.timber/timber.svg?maxAge=28800'></a>
 
 ## Pretty Logger
 
@@ -127,19 +101,19 @@ Will be updated soon
 
 ## [Glide] (https://github.com/bumptech/glide)
 
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.github.bumptech.glide%22%20AND%20a%3A%22glide%22'><img src='https://img.shields.io/maven-central/v/com.github.bumptech.glide/glide.svg'></a>
+<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.github.bumptech.glide%22%20AND%20a%3A%22glide%22'><img src='https://img.shields.io/maven-central/v/com.github.bumptech.glide/glide.svg?maxAge=28800'></a>
 
 ## [Butterknife] (http://jakewharton.github.io/butterknife/)
 
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cbutterknife'><img src='https://img.shields.io/maven-central/v/com.jakewharton/butterknife.svg'></a>
+<a href='http://search.maven.org/#search%7Cga%7C1%7Cbutterknife'><img src='https://img.shields.io/maven-central/v/com.jakewharton/butterknife.svg?maxAge=28800'></a>
 
 ## [LeakCanary] (https://github.com/square/leakcanary)
 
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.leakcanary%22%20AND%20a%3A%22leakcanary-android%22'><img src='https://img.shields.io/maven-central/v/com.squareup.leakcanary/leakcanary-android.svg'></a>
+<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.leakcanary%22%20AND%20a%3A%22leakcanary-android%22'><img src='https://img.shields.io/maven-central/v/com.squareup.leakcanary/leakcanary-android.svg?maxAge=28800'></a>
 
 ## [Blockanary] (https://github.com/markzhai/AndroidPerformanceMonitor)
 
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.github.moduth%22'><img src='https://img.shields.io/maven-central/v/com.github.moduth/blockcanary-android.svg'></a>
+<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.github.moduth%22'><img src='https://img.shields.io/maven-central/v/com.github.moduth/blockcanary-android.svg?maxAge=28800'></a>
 
 
 # License
