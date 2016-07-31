@@ -1,4 +1,4 @@
-package com.szymongrochowiak.androidstarterpack;
+package com.szymongrochowiak.androidstarterpack.network;
 
 import com.szymongrochowiak.androidstarterpack.models.Berry;
 

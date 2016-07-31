@@ -1,4 +1,4 @@
-package com.szymongrochowiak.androidstarterpack;
+package com.szymongrochowiak.androidstarterpack.network;
 
 import android.support.annotation.NonNull;
 

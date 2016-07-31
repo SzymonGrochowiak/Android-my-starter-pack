@@ -5,6 +5,8 @@ import android.app.Application;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.szymongrochowiak.androidstarterpack.network.ApiInterface;
+import com.szymongrochowiak.androidstarterpack.network.ApiManager;
 
 import javax.inject.Singleton;
 
