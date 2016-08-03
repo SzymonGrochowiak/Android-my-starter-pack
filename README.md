@@ -12,134 +12,20 @@ As far as everybody knows there are many collections and sets that are available
 
 # Libraries
 
-## [Dagger 2] (https://github.com/google/dagger)
-
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cdagger'><img src='https://img.shields.io/maven-central/v/com.google.dagger/dagger.svg'></a>
-
-## [Google Play Services] (https://developers.google.com/android/guides/setup)
-
-### Full dependency:
-```groovy
-compile 'com.google.android.gms:play-services:9.2.1'
-```
-
-### Separeted dependencies:
-```groovy
-compile 'com.google.android.gms:play-services-plus:9.2.1'
-compile 'com.google.android.gms:play-services-auth:9.2.1'
-compile 'com.google.android.gms:play-services-base:9.2.1'
-compile 'com.google.android.gms:play-services-identity:9.2.1'
-compile 'com.google.android.gms:play-services-appindexing:9.2.1'
-compile 'com.google.android.gms:play-services-appinvite:9.2.1'
-compile 'com.google.android.gms:play-services-analytics:9.2.1'
-compile 'com.google.android.gms:play-services-contextmanager:9.2.1'
-compile 'com.google.android.gms:play-services-cast:9.2.1'
-compile 'com.google.android.gms:play-services-gcm:9.2.1'
-compile 'com.google.android.gms:play-services-drive:9.2.1'
-compile 'com.google.android.gms:play-services-fitness:9.2.1'
-compile 'com.google.android.gms:play-services-location:9.2.1'
-compile 'com.google.android.gms:play-services-maps:9.2.1'
-compile 'com.google.android.gms:play-services-ads:9.2.1'
-compile 'com.google.android.gms:play-services-places:9.2.1'
-compile 'com.google.android.gms:play-services-vision:9.2.1'
-compile 'com.google.android.gms:play-services-nearby:9.2.1'
-compile 'com.google.android.gms:play-services-panorama:9.2.1'
-compile 'com.google.android.gms:play-services-games:9.2.1'
-compile 'com.google.android.gms:play-services-safetynet:9.2.1'
-compile 'com.google.android.gms:play-services-wallet:9.2.1'
-compile 'com.google.android.gms:play-services-wearable:9.2.1'
-```
-
-## Support libraries
-```groovy
-compile 'com.android.support:appcompat-v7:24.1.1'
-compile 'com.android.support:cardview-v7:24.1.1'
-compile 'com.android.support:design:24.1.1'
-compile 'com.android.support:gridlayout-v7:24.1.1'
-compile 'com.android.support:leanback-v17:24.1.1'
-compile 'com.android.support:mediarouter-v7:24.1.1'
-compile 'com.android.support:palette-v7:24.1.1'
-compile 'com.android.support:recyclerview-v7:24.1.1'
-compile 'com.android.support:support-annotations:24.1.1'
-compile 'com.android.support:support-v13:24.1.1'
-compile 'com.android.support:support-v4:24.1.1'
-```
-
-## [Multidex] (https://developer.android.com/studio/build/multidex.html#mdex-gradle)
-```groovy
-'compile com.android.support:multidex:1.0.1'
-```
-
-## Retrolambda
-
-Will be updated soon. Need to check if it can be easily replaced by the new Java 8 integration system without conflicts with Dagger 2.
-
-## RxJava
-
-### Core:
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.reactivex%22%20AND%20a%3A%22rxjava%22'><img src='https://img.shields.io/maven-central/v/io.reactivex/rxjava.svg'></a>
-
-### RxAndroid:
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.reactivex%22%20AND%20a%3A%22rxandroid%22'><img src='https://img.shields.io/maven-central/v/io.reactivex/rxandroid.svg'></a>
-
-### [RxJavaDebug] (https://github.com/ReactiveX/RxJavaDebug)
-
-### [RxBinding] (https://github.com/JakeWharton/RxBinding):
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.jakewharton.rxbinding%22'><img src='https://img.shields.io/maven-central/v/com.jakewharton.rxbinding/rxbinding.svg'></a>
-
-## [Retrofit] (http://square.github.io/retrofit/)
-
-### Core:
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cretrofit'><img src='https://img.shields.io/maven-central/v/com.squareup.retrofit2/retrofit.svg'></a>
-
-### JSON converter - GSON:
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.retrofit2%22%20AND%20a%3A%22converter-gson%22'><img src='https://img.shields.io/maven-central/v/com.squareup.retrofit2/converter-gson.svg'></a>
-
-### XML converter - Simple XML:
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.retrofit2%22%20AND%20a%3A%22converter-simplexml%22'><img src='https://img.shields.io/maven-central/v/com.squareup.retrofit2/converter-simplexml.svg'></a>
-
-### RXJava adapter:
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.retrofit2%22%20AND%20a%3A%22adapter-rxjava%22'><img src='https://img.shields.io/maven-central/v/com.squareup.retrofit2/adapter-rxjava.svg'></a>
-
-## [OkHttp] (http://square.github.io/okhttp/)
-
-### Core:
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.okhttp3%22%20'><img src='https://img.shields.io/maven-central/v/com.squareup.okhttp3/okhttp.svg'></a>
-
-### Http Logger:
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.okhttp3%22%20AND%20a%3A%22logging-interceptor%22'><img src='https://img.shields.io/maven-central/v/com.squareup.okhttp3/logging-interceptor.svg'></a>
-
-## [Parceler] (http://parceler.org/)
-
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.parceler%22'><img src='https://img.shields.io/maven-central/v/org.parceler/parceler.svg'></a>
-
-## [Otto Event Bus] (http://square.github.io/otto/)
-
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup%22%20AND%20a%3A%22otto%22'><img src='https://img.shields.io/maven-central/v/com.squareup/otto.svg'></a>
-
-## [Timber] (https://github.com/JakeWharton/timber)
-
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.jakewharton.timber%22'><img src='https://img.shields.io/maven-central/v/com.jakewharton.timber/timber.svg'></a>
-
-## Pretty Logger
-
-Will be updated soon
-
-## [Glide] (https://github.com/bumptech/glide)
-
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.github.bumptech.glide%22%20AND%20a%3A%22glide%22'><img src='https://img.shields.io/maven-central/v/com.github.bumptech.glide/glide.svg'></a>
-
-## [Butterknife] (http://jakewharton.github.io/butterknife/)
-
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cbutterknife'><img src='https://img.shields.io/maven-central/v/com.jakewharton/butterknife.svg'></a>
-
-## [LeakCanary] (https://github.com/square/leakcanary)
-
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.leakcanary%22%20AND%20a%3A%22leakcanary-android%22'><img src='https://img.shields.io/maven-central/v/com.squareup.leakcanary/leakcanary-android.svg'></a>
-
-## [Blockanary] (https://github.com/markzhai/AndroidPerformanceMonitor)
-
-<a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.github.moduth%22'><img src='https://img.shields.io/maven-central/v/com.github.moduth/blockcanary-android.svg'></a>
+| Name | Project site | Version |
+|---|---|---|
+| [Dagger 2] (#dagger-2) | http://google.github.io/dagger/ |<a href='http://search.maven.org/#search%7Cga%7C1%7Cdagger'><img src='https://img.shields.io/maven-central/v/com.google.dagger/dagger.svg?maxAge=28800'></a>|
+| [Retrolambda] (#retrolambda) | https://github.com/evant/gradle-retrolambda | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22me.tatarka%22%20AND%20a%3A%22gradle-retrolambda%22'><img src='https://img.shields.io/maven-central/v/me.tatarka/gradle-retrolambda.svg?maxAge=28800'></a> |
+| [RxJava] (#rxjava) | https://github.com/ReactiveX/RxJava | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.reactivex%22%20AND%20a%3A%22rxjava%22'><img src='https://img.shields.io/maven-central/v/io.reactivex/rxjava.svg?maxAge=28800'></a> |
+| [RxAndroid] (#rxandroid) | https://github.com/ReactiveX/RxAndroid | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.reactivex%22%20AND%20a%3A%22rxandroid%22'><img src='https://img.shields.io/maven-central/v/io.reactivex/rxandroid.svg?maxAge=28800'></a> |
+| [Retrofit] (#retrofit) | http://square.github.io/retrofit/ | <a href='http://search.maven.org/#search%7Cga%7C1%7Cretrofit'><img src='https://img.shields.io/maven-central/v/com.squareup.retrofit2/retrofit.svg?maxAge=28800'></a> |
+| [Retrofit: GSON converter] (#gson-converter) | - | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.retrofit2%22%20AND%20a%3A%22converter-gson%22'><img src='https://img.shields.io/maven-central/v/com.squareup.retrofit2/converter-gson.svg?maxAge=28800'></a> |
+| [Retrofit: RxJava adapter] (#rxjava-adapter) | - | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.retrofit2%22%20AND%20a%3A%22adapter-rxjava%22'><img src='https://img.shields.io/maven-central/v/com.squareup.retrofit2/adapter-rxjava.svg?maxAge=28800'></a> |
+| [OkHttp] (#okhttp) | http://square.github.io/okhttp/ | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.okhttp3%22%20'><img src='https://img.shields.io/maven-central/v/com.squareup.okhttp3/okhttp.svg?maxAge=28800'></a> |
+| [OkHttp: Logger] (#http-logger) | - | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.squareup.okhttp3%22%20AND%20a%3A%22logging-interceptor%22'><img src='https://img.shields.io/maven-central/v/com.squareup.okhttp3/logging-interceptor.svg?maxAge=28800'></a> |
+| [GSON] (#gson) | https://github.com/google/gson | <a href='http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.google.code.gson%22%20AND%20a%3A%22gson%22'><img src='https://img.shields.io/maven-central/v/com.google.code.gson/gson.svg?maxAge=28800'></a> |
+| [Timber] (#timber) | https://github.com/JakeWharton/timber | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.jakewharton.timber%22'><img src='https://img.shields.io/maven-central/v/com.jakewharton.timber/timber.svg?maxAge=28800'></a> |
+| [Butterknife] (#butterknife) | http://jakewharton.github.io/butterknife/ | <a href='http://search.maven.org/#search%7Cga%7C1%7Cbutterknife'><img src='https://img.shields.io/maven-central/v/com.jakewharton/butterknife.svg?maxAge=28800'></a> |
 
 
 # License
