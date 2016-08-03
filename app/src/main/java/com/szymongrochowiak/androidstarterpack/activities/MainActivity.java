@@ -24,6 +24,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import rx.Subscription;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -33,6 +34,8 @@ public class MainActivity extends BaseActivity
 
     @BindView(R.id.textView)
     TextView mTextView;
+
+    private Subscription mSubscription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,9 +66,17 @@ public class MainActivity extends BaseActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        mApiManager.getBerry(new Random().nextInt(30))
+        mSubscription = mApiManager.getBerry(new Random().nextInt(30))
                 .subscribe(berry -> mTextView.setText(berry.getName()), throwable -> mTextView.setText(throwable
                         .toString()));
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (mSubscription != null) {
+            mSubscription.unsubscribe();
+        }
+        super.onDestroy();
     }
 
     @Override
