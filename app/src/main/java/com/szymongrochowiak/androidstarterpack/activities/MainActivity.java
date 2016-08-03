@@ -12,19 +12,24 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.szymongrochowiak.androidstarterpack.network.ApiManager;
 import com.szymongrochowiak.androidstarterpack.R;
 import com.szymongrochowiak.androidstarterpack.StarterPackApplication;
 import com.szymongrochowiak.androidstarterpack.activities.base.BaseActivity;
+import com.trello.rxlifecycle.ActivityEvent;
 
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import rx.Observable;
 import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
 
 public class MainActivity extends BaseActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -34,8 +39,6 @@ public class MainActivity extends BaseActivity
 
     @BindView(R.id.textView)
     TextView mTextView;
-
-    private Subscription mSubscription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,16 +64,14 @@ public class MainActivity extends BaseActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        mSubscription = mApiManager.getBerry(new Random().nextInt(30))
+        mApiManager.getBerry(new Random().nextInt(30))
+                .compose(bindToLifecycle())
                 .subscribe(berry -> mTextView.setText(berry.getName()), throwable -> mTextView.setText(throwable
                         .toString()));
     }
 
     @Override
     protected void onDestroy() {
-        if (mSubscription != null) {
-            mSubscription.unsubscribe();
-        }
         super.onDestroy();
     }
 
