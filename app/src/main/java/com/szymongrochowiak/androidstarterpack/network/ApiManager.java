@@ -21,7 +21,11 @@ public class ApiManager {
 
     public Observable<Berry> getBerry(int id) {
         return mApiInterface.getBerry(id)
-                .subscribeOn(Schedulers.io())
+                .compose(applySchedulers());
+    }
+
+    private <T> Observable.Transformer<T, T> applySchedulers() {
+        return observable -> observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
 }
