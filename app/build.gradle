@@ -50,7 +50,7 @@ dependencies {
 
     // RxJava
     compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'io.reactivex:rxjava:1.1.8'
+    compile 'io.reactivex:rxjava:1.1.9'
 
     // RxLifecycle
     compile 'com.trello:rxlifecycle:0.6.1'
@@ -70,5 +70,5 @@ dependencies {
     apt 'com.jakewharton:butterknife-compiler:8.2.1'
 
     // Timber
-    compile 'com.jakewharton.timber:timber:4.1.2'
+    compile 'com.jakewharton.timber:timber:4.3.0'
 }
