@@ -1,6 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
-apply plugin: 'me.tatarka.retrolambda'
 
 def versionMajor = 0
 def versionMinor = 0
@@ -17,6 +15,10 @@ android {
         targetSdkVersion 24
         versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100 + versionBuild
         versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+
+        jackOptions {
+            enabled true
+        }
     }
     buildTypes {
         release {
@@ -40,7 +42,7 @@ dependencies {
 
     // Dagger 2
     compile 'com.google.dagger:dagger:2.6.1'
-    apt 'com.google.dagger:dagger-compiler:2.6.1'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.6.1'
 
     // Retrofit
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
@@ -68,7 +70,7 @@ dependencies {
 
     // Butterknife
     compile 'com.jakewharton:butterknife:8.4.0'
-    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 
     // Timber
     compile 'com.jakewharton.timber:timber:4.3.0'
