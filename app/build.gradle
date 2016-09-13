@@ -34,9 +34,9 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     // Support library
-    compile 'com.android.support:appcompat-v7:24.2.0'
-    compile 'com.android.support:design:24.2.0'
-    compile 'com.android.support:support-annotations:24.2.0'
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    compile 'com.android.support:design:24.2.1'
+    compile 'com.android.support:support-annotations:24.2.1'
 
     // Dagger 2
     compile 'com.google.dagger:dagger:2.6.1'
@@ -50,7 +50,7 @@ dependencies {
 
     // RxJava
     compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'io.reactivex:rxjava:1.1.9'
+    compile 'io.reactivex:rxjava:1.1.10'
 
     // RxLifecycle
     compile 'com.trello:rxlifecycle:0.7.0'
