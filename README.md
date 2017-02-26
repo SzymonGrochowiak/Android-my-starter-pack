@@ -4,10 +4,10 @@ It's a starter pack for creating Android projects in Android Studio. This collec
 
 # Quick introduction
 
-As far as everybody knows there are many collections and sets that are available like [Code Path must have libraries] (https://github.com/codepath/android_guides/wiki/Must-Have-Libraries). Since every project can have different configuration of these libraries and their alternatives I created a sample where is presented a combination of my favourite libraries. The reasons why I created this is to:
+As far as everybody knows there are many collections and sets that are available like [Code Path must have libraries] (https://github.com/codepath/android_guides/wiki/Must-Have-Libraries). Since every project can have different configuration of these libraries and their alternatives I create a sample project that presents a combination of my favourite libraries. The reasons why I created this is to:
 * keep update with the newest versions of the libraries that I use
 * create my own combination of the solutions
-* have a playground for testing new libraries and tools and check how they behave with my current solutions
+* have a playground for testing new libraries and tools and checking how they behave with my current solutions
 * provide a sample Android application as a scheme for new projects
 
 # Libraries
