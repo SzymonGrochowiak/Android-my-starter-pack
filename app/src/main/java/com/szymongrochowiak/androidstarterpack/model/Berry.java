@@ -1,4 +1,4 @@
-package com.szymongrochowiak.androidstarterpack.models;
+package com.szymongrochowiak.androidstarterpack.model;
 
 /**
  * @author Szymon Grochowiak

@@ -1,6 +1,6 @@
 package com.szymongrochowiak.androidstarterpack.network;
 
-import com.szymongrochowiak.androidstarterpack.models.Berry;
+import com.szymongrochowiak.androidstarterpack.model.Berry;
 
 import retrofit2.http.GET;
 import retrofit2.http.Path;

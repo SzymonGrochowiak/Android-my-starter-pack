@@ -2,7 +2,7 @@ package com.szymongrochowiak.androidstarterpack.network;
 
 import android.support.annotation.NonNull;
 
-import com.szymongrochowiak.androidstarterpack.models.Berry;
+import com.szymongrochowiak.androidstarterpack.model.Berry;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
