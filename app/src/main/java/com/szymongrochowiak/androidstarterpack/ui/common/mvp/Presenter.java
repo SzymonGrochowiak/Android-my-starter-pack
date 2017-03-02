@@ -1,4 +1,4 @@
-package com.szymongrochowiak.androidstarterpack.ui.mvp;
+package com.szymongrochowiak.androidstarterpack.ui.common.mvp;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -7,12 +7,12 @@ import android.support.annotation.Nullable;
  * @author Szymon Grochowiak
  */
 
-public class Presenter {
+public class Presenter<V extends MvpView> {
 
     @Nullable
-    private MvpView mMvpView;
+    private V mMvpView;
 
-    void attach(@NonNull MvpView mvpView) {
+    void attach(@NonNull V mvpView) {
         mMvpView = mvpView;
     }
 

@@ -1,6 +1,7 @@
-package com.szymongrochowiak.androidstarterpack.ui.activities;
+package com.szymongrochowiak.androidstarterpack.ui.main;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -14,8 +15,9 @@ import android.widget.TextView;
 
 import com.szymongrochowiak.androidstarterpack.R;
 import com.szymongrochowiak.androidstarterpack.StarterPackApplication;
-import com.szymongrochowiak.androidstarterpack.ui.activities.base.BaseActivity;
 import com.szymongrochowiak.androidstarterpack.network.ApiManager;
+import com.szymongrochowiak.androidstarterpack.ui.common.activities.base.BaseActivity;
+import com.szymongrochowiak.androidstarterpack.ui.common.mvp.Presenter;
 
 import java.util.Random;
 
@@ -123,5 +125,11 @@ public class MainActivity extends BaseActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @NonNull
+    @Override
+    public Presenter providePresenter() {
+        return new MainPresenter();
     }
 }
