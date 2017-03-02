@@ -1,6 +1,4 @@
-package com.szymongrochowiak.androidstarterpack.fragments.base;
-
-import android.support.v4.app.Fragment;
+package com.szymongrochowiak.androidstarterpack.ui.fragments.base;
 
 import com.trello.rxlifecycle.components.support.RxFragment;
 

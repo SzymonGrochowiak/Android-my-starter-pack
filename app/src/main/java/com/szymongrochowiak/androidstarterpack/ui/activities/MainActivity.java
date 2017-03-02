@@ -1,4 +1,4 @@
-package com.szymongrochowiak.androidstarterpack.activities;
+package com.szymongrochowiak.androidstarterpack.ui.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.szymongrochowiak.androidstarterpack.R;
 import com.szymongrochowiak.androidstarterpack.StarterPackApplication;
-import com.szymongrochowiak.androidstarterpack.activities.base.BaseActivity;
+import com.szymongrochowiak.androidstarterpack.ui.activities.base.BaseActivity;
 import com.szymongrochowiak.androidstarterpack.network.ApiManager;
 
 import java.util.Random;

@@ -1,6 +1,6 @@
-package com.szymongrochowiak.androidstarterpack;
+package com.szymongrochowiak.androidstarterpack.dagger;
 
-import com.szymongrochowiak.androidstarterpack.activities.MainActivity;
+import com.szymongrochowiak.androidstarterpack.ui.activities.MainActivity;
 
 import javax.inject.Singleton;
 

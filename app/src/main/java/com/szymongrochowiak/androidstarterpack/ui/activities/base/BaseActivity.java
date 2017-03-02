@@ -1,6 +1,4 @@
-package com.szymongrochowiak.androidstarterpack.activities.base;
-
-import android.support.v7.app.AppCompatActivity;
+package com.szymongrochowiak.androidstarterpack.ui.activities.base;
 
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
