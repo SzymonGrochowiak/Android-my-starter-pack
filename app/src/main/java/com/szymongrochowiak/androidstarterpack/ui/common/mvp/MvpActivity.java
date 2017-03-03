@@ -10,10 +10,12 @@ import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
  * @author Szymon Grochowiak
  */
 
-public abstract class MvpActivity<V extends MvpView, P extends Presenter<V>> extends RxAppCompatActivity implements
-        MvpView<P> {
+public abstract class MvpActivity<V extends MvpView, P extends MvpPresenter<V>> extends RxAppCompatActivity {
 
     private P mPresenter;
+
+    @NonNull
+    protected abstract P providePresenter();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,7 +27,7 @@ public abstract class MvpActivity<V extends MvpView, P extends Presenter<V>> ext
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mPresenter.dettach();
+        mPresenter.detach();
     }
 
     @NonNull

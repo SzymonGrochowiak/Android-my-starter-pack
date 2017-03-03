@@ -11,9 +11,12 @@ import com.trello.rxlifecycle.components.support.RxFragment;
  * @author Szymon Grochowiak
  */
 
-public abstract class MvpFragment<V extends MvpView, P extends Presenter<V>> extends RxFragment implements MvpView<P> {
+public abstract class MvpFragment<V extends MvpView, P extends MvpPresenter<V>> extends RxFragment {
 
     private P mPresenter;
+
+    @NonNull
+    protected abstract P providePresenter();
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -25,7 +28,7 @@ public abstract class MvpFragment<V extends MvpView, P extends Presenter<V>> ext
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        mPresenter.dettach();
+        mPresenter.detach();
     }
 
     @NonNull

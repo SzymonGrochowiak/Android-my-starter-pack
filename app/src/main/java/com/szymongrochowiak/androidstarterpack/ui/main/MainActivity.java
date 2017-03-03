@@ -17,52 +17,49 @@ import com.szymongrochowiak.androidstarterpack.R;
 import com.szymongrochowiak.androidstarterpack.StarterPackApplication;
 import com.szymongrochowiak.androidstarterpack.network.ApiManager;
 import com.szymongrochowiak.androidstarterpack.ui.common.activities.base.BaseActivity;
-import com.szymongrochowiak.androidstarterpack.ui.common.mvp.Presenter;
-
-import java.util.Random;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity<MainView, MainPresenter>
+        implements MainView, NavigationView.OnNavigationItemSelectedListener {
 
     @Inject
     ApiManager mApiManager;
 
     @BindView(R.id.textView)
     TextView mTextView;
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout mDrawerLayout;
+    @BindView(R.id.fab)
+    FloatingActionButton mFloatingActionButton;
+    @BindView(R.id.nav_view)
+    NavigationView mNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ((StarterPackApplication) getApplication()).getDaggerApplicationComponent().inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        ((StarterPackApplication) getApplication()).getDaggerApplicationComponent().inject(this);
+        setSupportActionBar(mToolbar);
+        mFloatingActionButton.setOnClickListener(
+                view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show());
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show());
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+                this, mDrawerLayout, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        mDrawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        mNavigationView.setNavigationItemSelectedListener(this);
 
-        mApiManager.getBerry(new Random().nextInt(30))
-                .compose(bindToLifecycle())
-                .subscribe(berry -> mTextView.setText(berry.getName()), throwable -> mTextView.setText(throwable
-                        .toString()));
+        getPresenter().fetchBerry();
     }
 
     @Override
@@ -122,14 +119,23 @@ public class MainActivity extends BaseActivity
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 
     @NonNull
     @Override
-    public Presenter providePresenter() {
-        return new MainPresenter();
+    public MainPresenter providePresenter() {
+        return new MainPresenter(mApiManager);
+    }
+
+    @Override
+    public void showBerryName(String berryName) {
+        mTextView.setText(berryName);
+    }
+
+    @Override
+    public void showBerryFetchError(String errorMessage) {
+        mTextView.setText(errorMessage);
     }
 }
