@@ -1,4 +1,4 @@
-package com.szymongrochowiak.androidstarterpack;
+package com.szymongrochowiak.androidstarterpack.dagger;
 
 import android.app.Application;
 

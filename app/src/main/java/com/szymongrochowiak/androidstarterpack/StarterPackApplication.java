@@ -2,7 +2,11 @@ package com.szymongrochowiak.androidstarterpack;
 
 import android.app.Application;
 
-import rx.functions.Action1;
+import com.szymongrochowiak.androidstarterpack.dagger.ApplicationComponent;
+import com.szymongrochowiak.androidstarterpack.dagger.ApplicationModule;
+import com.szymongrochowiak.androidstarterpack.dagger.DaggerApplicationComponent;
+import com.szymongrochowiak.androidstarterpack.dagger.NetworkingModule;
+
 import rx.plugins.RxJavaHooks;
 import timber.log.Timber;
 

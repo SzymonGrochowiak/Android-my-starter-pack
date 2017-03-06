@@ -1,4 +1,4 @@
-package com.szymongrochowiak.androidstarterpack;
+package com.szymongrochowiak.androidstarterpack.dagger;
 
 import android.app.Application;
 
@@ -26,7 +26,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NetworkingModule {
 
     public static final String BASE_ENDPOINT = "http://pokeapi.co/api/v2/";
-    public static final int CACHE_SIZE = 40 * 1024 * 1024;  // 40 MB
+    public static final int CACHE_SIZE_MB = 40 * 1024 * 1024;  // 40 MB
 
     @Provides
     @Singleton
@@ -38,7 +38,7 @@ public class NetworkingModule {
     @Provides
     @Singleton
     Cache provideCache(Application application) {
-        return new Cache(application.getCacheDir(), CACHE_SIZE);
+        return new Cache(application.getCacheDir(), CACHE_SIZE_MB);
     }
 
     @Provides
