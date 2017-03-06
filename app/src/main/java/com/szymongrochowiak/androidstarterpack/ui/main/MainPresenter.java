@@ -1,6 +1,6 @@
 package com.szymongrochowiak.androidstarterpack.ui.main;
 
-import com.szymongrochowiak.androidstarterpack.network.ApiManager;
+import com.szymongrochowiak.androidstarterpack.data.network.ApiManager;
 import com.szymongrochowiak.androidstarterpack.ui.common.mvp.BasePresenter;
 
 import java.util.Random;

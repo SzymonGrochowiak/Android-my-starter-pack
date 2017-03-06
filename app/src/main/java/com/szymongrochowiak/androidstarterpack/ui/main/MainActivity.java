@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.szymongrochowiak.androidstarterpack.R;
 import com.szymongrochowiak.androidstarterpack.StarterPackApplication;
-import com.szymongrochowiak.androidstarterpack.network.ApiManager;
+import com.szymongrochowiak.androidstarterpack.data.network.ApiManager;
 import com.szymongrochowiak.androidstarterpack.ui.common.activities.base.BaseActivity;
 
 import javax.inject.Inject;
