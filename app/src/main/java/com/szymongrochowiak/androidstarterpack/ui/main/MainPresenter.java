@@ -26,7 +26,7 @@ public class MainPresenter extends BasePresenter<MainView> {
                     }
                 }, throwable -> {
                     if (isAttached()) {
-                        getMvpView().showBerryName(throwable.toString());
+                        getMvpView().showBerryFetchError(throwable.toString());
                     }
                 });
         getCompositeSubscription().add(fetchBerrySubscription);
