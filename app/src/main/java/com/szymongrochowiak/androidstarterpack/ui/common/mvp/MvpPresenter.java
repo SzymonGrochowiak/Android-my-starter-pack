@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 /**
  * @author Szymon Grochowiak
  */
-
 public class MvpPresenter<V extends MvpView> {
 
     @Nullable
@@ -14,7 +13,7 @@ public class MvpPresenter<V extends MvpView> {
 
     void attach(@NonNull V mvpView) {
         if (isAttached()) {
-            throw new IllegalStateException("Presenter is already attached");
+            throw new IllegalStateException("Presenter is already attached.");
         }
         mMvpView = mvpView;
     }

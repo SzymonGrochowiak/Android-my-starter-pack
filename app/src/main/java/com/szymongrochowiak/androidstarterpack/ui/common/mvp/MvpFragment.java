@@ -10,7 +10,6 @@ import com.trello.rxlifecycle.components.support.RxFragment;
 /**
  * @author Szymon Grochowiak
  */
-
 public abstract class MvpFragment<V extends MvpView, P extends MvpPresenter<V>> extends RxFragment {
 
     private P mPresenter;

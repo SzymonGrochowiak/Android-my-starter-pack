@@ -5,7 +5,6 @@ import rx.subscriptions.CompositeSubscription;
 /**
  * @author Szymon Grochowiak
  */
-
 public class BasePresenter<V extends MvpView> extends MvpPresenter<V> {
 
     private CompositeSubscription mCompositeSubscription = new CompositeSubscription();

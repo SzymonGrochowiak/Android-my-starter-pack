@@ -5,7 +5,6 @@ import com.szymongrochowiak.androidstarterpack.ui.common.mvp.MvpView;
 /**
  * @author Szymon Grochowiak
  */
-
 public interface MainView extends MvpView {
 
     void showBerryName(String berryName);

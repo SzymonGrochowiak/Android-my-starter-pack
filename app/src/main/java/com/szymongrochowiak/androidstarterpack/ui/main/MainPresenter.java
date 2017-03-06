@@ -10,7 +10,6 @@ import rx.Subscription;
 /**
  * @author Szymon Grochowiak
  */
-
 public class MainPresenter extends BasePresenter<MainView> {
 
     private ApiManager mApiManager;
