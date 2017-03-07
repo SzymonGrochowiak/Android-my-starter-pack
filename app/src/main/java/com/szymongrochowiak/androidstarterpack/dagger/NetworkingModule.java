@@ -6,7 +6,7 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.szymongrochowiak.androidstarterpack.data.network.ApiInterface;
-import com.szymongrochowiak.androidstarterpack.data.network.ApiManager;
+import com.szymongrochowiak.androidstarterpack.data.network.ApiRepository;
 
 import javax.inject.Singleton;
 
@@ -62,7 +62,7 @@ public class NetworkingModule {
 
     @Provides
     @Singleton
-    ApiManager provideApiManager(Retrofit retrofit) {
-        return new ApiManager(retrofit.create(ApiInterface.class));
+    ApiRepository provideApiRepository(Retrofit retrofit) {
+        return new ApiRepository(retrofit.create(ApiInterface.class));
     }
 }

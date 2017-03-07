@@ -2,6 +2,7 @@ package com.szymongrochowiak.androidstarterpack.data.network;
 
 import android.support.annotation.NonNull;
 
+import com.szymongrochowiak.androidstarterpack.data.Repository;
 import com.szymongrochowiak.androidstarterpack.data.model.Berry;
 import com.szymongrochowiak.androidstarterpack.data.network.ApiInterface;
 
@@ -12,11 +13,11 @@ import rx.schedulers.Schedulers;
 /**
  * @author Szymon Grochowiak
  */
-public class ApiManager {
+public class ApiRepository implements Repository {
 
     private ApiInterface mApiInterface;
 
-    public ApiManager(@NonNull ApiInterface apiInterface) {
+    public ApiRepository(@NonNull ApiInterface apiInterface) {
         mApiInterface = apiInterface;
     }
 
