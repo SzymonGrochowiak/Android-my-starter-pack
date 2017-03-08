@@ -62,7 +62,7 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter>
 
         mNavigationView.setNavigationItemSelectedListener(this);
 
-        getPresenter().fetchBerry();
+        getPresenter().queryBerry();
     }
 
     @Override

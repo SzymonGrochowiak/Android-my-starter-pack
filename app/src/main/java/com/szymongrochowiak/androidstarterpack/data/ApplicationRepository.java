@@ -27,7 +27,7 @@ public class ApplicationRepository implements Repository {
 
     @NonNull
     @Override
-    public Observable<Berry> getBerry(int id) {
-        return mRepositoryList.get(0).getBerry(id);
+    public Observable<Berry> queryBerry(int id) {
+        return mRepositoryList.get(0).queryBerry(id);
     }
 }

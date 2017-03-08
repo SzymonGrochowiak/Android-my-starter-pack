@@ -24,7 +24,7 @@ public class NetworkRepository implements Repository {
 
     @NonNull
     @Override
-    public Observable<Berry> getBerry(int id) {
+    public Observable<Berry> queryBerry(int id) {
         return mApiInterface.getBerry(id)
                 .compose(applySchedulers());
     }

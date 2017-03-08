@@ -13,5 +13,5 @@ import rx.Observable;
 public interface Repository {
 
     @NonNull
-    Observable<Berry> getBerry(int id);
+    Observable<Berry> queryBerry(int id);
 }

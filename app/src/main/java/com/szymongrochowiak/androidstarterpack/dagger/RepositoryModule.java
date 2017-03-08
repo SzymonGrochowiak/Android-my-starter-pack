@@ -13,7 +13,7 @@ import dagger.Provides;
  * @author Szymon Grochowiak
  */
 @Module
-public class DataModule {
+public class RepositoryModule {
 
     @Provides
     @Singleton

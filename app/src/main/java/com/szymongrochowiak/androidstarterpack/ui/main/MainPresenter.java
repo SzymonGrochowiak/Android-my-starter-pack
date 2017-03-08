@@ -21,8 +21,8 @@ public class MainPresenter extends BasePresenter<MainView> {
         mRepository = repository;
     }
 
-    public void fetchBerry() {
-        Subscription fetchBerrySubscription = mRepository.getBerry(getBerryId())
+    public void queryBerry() {
+        Subscription fetchBerrySubscription = mRepository.queryBerry(getBerryId())
                 .subscribe(berry -> {
                     if (isAttached()) {
                         getMvpView().showBerryName(berry.getName());
