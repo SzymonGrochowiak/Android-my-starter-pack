@@ -10,7 +10,7 @@ import dagger.Component;
  * @author Szymon Grochowiak
  */
 @Singleton
-@Component(modules = {ApplicationModule.class, NetworkingModule.class})
+@Component(modules = {ApplicationModule.class, NetworkingModule.class, LocalDataModule.class, DataModule.class})
 public interface ApplicationComponent {
 
     void inject(MainActivity mainActivity);

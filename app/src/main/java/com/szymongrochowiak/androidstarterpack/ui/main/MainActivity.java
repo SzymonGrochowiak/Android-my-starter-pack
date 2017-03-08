@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.szymongrochowiak.androidstarterpack.R;
 import com.szymongrochowiak.androidstarterpack.StarterPackApplication;
-import com.szymongrochowiak.androidstarterpack.data.network.ApiRepository;
+import com.szymongrochowiak.androidstarterpack.data.ApplicationRepository;
 import com.szymongrochowiak.androidstarterpack.ui.common.activities.base.BaseActivity;
 
 import javax.inject.Inject;
@@ -30,7 +30,7 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter>
         implements MainView, NavigationView.OnNavigationItemSelectedListener {
 
     @Inject
-    ApiRepository mApiRepository;
+    ApplicationRepository mRepository;
 
     @BindView(R.id.textView)
     TextView mTextView;
@@ -123,7 +123,7 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter>
     @NonNull
     @Override
     public MainPresenter providePresenter() {
-        return new MainPresenter(mApiRepository);
+        return new MainPresenter(mRepository);
     }
 
     @Override

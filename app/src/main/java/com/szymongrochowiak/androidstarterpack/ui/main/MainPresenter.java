@@ -1,6 +1,8 @@
 package com.szymongrochowiak.androidstarterpack.ui.main;
 
-import com.szymongrochowiak.androidstarterpack.data.network.ApiRepository;
+import android.support.annotation.NonNull;
+
+import com.szymongrochowiak.androidstarterpack.data.ApplicationRepository;
 import com.szymongrochowiak.androidstarterpack.ui.common.mvp.BasePresenter;
 
 import java.util.Random;
@@ -12,14 +14,15 @@ import rx.Subscription;
  */
 public class MainPresenter extends BasePresenter<MainView> {
 
-    private ApiRepository mApiRepository;
+    @NonNull
+    private ApplicationRepository mRepository;
 
-    public MainPresenter(ApiRepository apiRepository) {
-        mApiRepository = apiRepository;
+    public MainPresenter(@NonNull ApplicationRepository repository) {
+        mRepository = repository;
     }
 
     public void fetchBerry() {
-        Subscription fetchBerrySubscription = mApiRepository.getBerry(getBerryId())
+        Subscription fetchBerrySubscription = mRepository.getBerry(getBerryId())
                 .subscribe(berry -> {
                     if (isAttached()) {
                         getMvpView().showBerryName(berry.getName());

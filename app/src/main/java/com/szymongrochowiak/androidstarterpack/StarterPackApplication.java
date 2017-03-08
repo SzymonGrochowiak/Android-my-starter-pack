@@ -3,9 +3,7 @@ package com.szymongrochowiak.androidstarterpack;
 import android.app.Application;
 
 import com.szymongrochowiak.androidstarterpack.dagger.ApplicationComponent;
-import com.szymongrochowiak.androidstarterpack.dagger.ApplicationModule;
 import com.szymongrochowiak.androidstarterpack.dagger.DaggerApplicationComponent;
-import com.szymongrochowiak.androidstarterpack.dagger.NetworkingModule;
 
 import rx.plugins.RxJavaHooks;
 import timber.log.Timber;
@@ -27,8 +25,6 @@ public class StarterPackApplication extends Application {
 
     private void initDaggerComponent() {
         mDaggerComponent = DaggerApplicationComponent.builder()
-                .applicationModule(new ApplicationModule(this))
-                .networkingModule(new NetworkingModule())
                 .build();
     }
 

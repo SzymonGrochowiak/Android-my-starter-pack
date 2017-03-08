@@ -13,19 +13,23 @@ import rx.schedulers.Schedulers;
 /**
  * @author Szymon Grochowiak
  */
-public class ApiRepository implements Repository {
+public class NetworkRepository implements Repository {
 
+    @NonNull
     private ApiInterface mApiInterface;
 
-    public ApiRepository(@NonNull ApiInterface apiInterface) {
+    public NetworkRepository(@NonNull ApiInterface apiInterface) {
         mApiInterface = apiInterface;
     }
 
+    @NonNull
+    @Override
     public Observable<Berry> getBerry(int id) {
         return mApiInterface.getBerry(id)
                 .compose(applySchedulers());
     }
 
+    @NonNull
     private <T> Observable.Transformer<T, T> applySchedulers() {
         return observable -> observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());

@@ -28,6 +28,6 @@ public class ApplicationRepository implements Repository {
     @NonNull
     @Override
     public Observable<Berry> getBerry(int id) {
-        return null;
+        return mRepositoryList.get(0).getBerry(id);
     }
 }
