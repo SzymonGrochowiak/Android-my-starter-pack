@@ -12,7 +12,6 @@ import rx.Observable;
 /**
  * @author Szymon Grochowiak
  */
-
 public class ApplicationRepository implements Repository {
 
     @NonNull
@@ -28,6 +27,12 @@ public class ApplicationRepository implements Repository {
     @NonNull
     @Override
     public Observable<Berry> queryBerry(int id) {
-        return mRepositoryList.get(0).queryBerry(id);
+        return Observable.from(mRepositoryList).concatMap(
+                repository -> repository.queryBerry(id));
+    }
+
+    @Override
+    public void destroy() {
+        Observable.from(mRepositoryList).forEach(Repository::destroy);
     }
 }

@@ -9,9 +9,10 @@ import rx.Observable;
 /**
  * @author Szymon Grochowiak
  */
-
 public interface Repository {
 
     @NonNull
     Observable<Berry> queryBerry(int id);
+
+    void destroy();
 }

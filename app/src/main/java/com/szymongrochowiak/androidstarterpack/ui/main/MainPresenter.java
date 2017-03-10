@@ -38,4 +38,8 @@ public class MainPresenter extends BasePresenter<MainView> {
     private int getBerryId() {
         return new Random().nextInt(30);
     }
+
+    public void destroyRepositories() {
+
+    }
 }

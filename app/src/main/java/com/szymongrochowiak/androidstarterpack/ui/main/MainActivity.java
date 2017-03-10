@@ -67,6 +67,7 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter>
 
     @Override
     protected void onDestroy() {
+        getPresenter().destroyRepositories();
         super.onDestroy();
     }
 

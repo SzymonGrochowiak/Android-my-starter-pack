@@ -22,7 +22,7 @@ public class LocalDataModule {
 
     @Provides
     @Singleton
-    LocalRepository provideLocalRepository() {
-        return new LocalRepository();
+    LocalRepository provideLocalRepository(Realm realm) {
+        return new LocalRepository(realm);
     }
 }

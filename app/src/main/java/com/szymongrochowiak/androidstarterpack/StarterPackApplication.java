@@ -5,6 +5,7 @@ import android.app.Application;
 import com.szymongrochowiak.androidstarterpack.dagger.ApplicationComponent;
 import com.szymongrochowiak.androidstarterpack.dagger.DaggerApplicationComponent;
 
+import io.realm.Realm;
 import rx.plugins.RxJavaHooks;
 import timber.log.Timber;
 
@@ -18,9 +19,14 @@ public class StarterPackApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        initRealm();
         initDaggerComponent();
         initTimber();
         initRxJava();
+    }
+
+    private void initRealm() {
+        Realm.init(this);
     }
 
     private void initDaggerComponent() {
