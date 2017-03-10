@@ -12,6 +12,7 @@ import com.trello.rxlifecycle.components.support.RxFragment;
  */
 public abstract class MvpFragment<V extends MvpView, P extends MvpPresenter<V>> extends RxFragment {
 
+    @Nullable
     private P mPresenter;
 
     @NonNull
@@ -27,11 +28,16 @@ public abstract class MvpFragment<V extends MvpView, P extends MvpPresenter<V>> 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        mPresenter.detach();
+        if (mPresenter != null) {
+            mPresenter.detach();
+        }
     }
 
     @NonNull
     public P getPresenter() {
+        if (mPresenter == null) {
+            throw new NullPointerException("Presenter not attached");
+        }
         return mPresenter;
     }
 }

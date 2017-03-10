@@ -30,7 +30,15 @@ public class NetworkRepository implements Repository {
     @Override
     public Observable<Berry> queryBerry(int id) {
         return mApiInterface.getBerry(id)
-                .compose(applySchedulers()).map(berry -> mLocalRepository.saveToRepository(berry));
+                .compose(applySchedulers()).map(berry -> {
+                    Berry realmBerry = mLocalRepository.saveToRepository(berry);
+                    return realmBerry == null ? berry : realmBerry;
+                });
+    }
+
+    @Override
+    public void start() {
+        // Nothing to start
     }
 
     @NonNull
@@ -41,6 +49,6 @@ public class NetworkRepository implements Repository {
 
     @Override
     public void destroy() {
-        // nothing to destroy
+        // Nothing to destroy
     }
 }

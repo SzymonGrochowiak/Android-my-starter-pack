@@ -14,5 +14,7 @@ public interface Repository {
     @NonNull
     Observable<Berry> queryBerry(int id);
 
+    void start();
+
     void destroy();
 }

@@ -47,6 +47,7 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter>
     protected void onCreate(Bundle savedInstanceState) {
         ((StarterPackApplication) getApplication()).getDaggerApplicationComponent().inject(this);
         super.onCreate(savedInstanceState);
+        getPresenter().startRepository();
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
@@ -69,7 +70,7 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter>
     protected void onDestroy() {
         // TODO needed proper handling of configuration changes, consider changing this?
         if (!isChangingConfigurations()) {
-            getPresenter().destroyRepositories();
+            getPresenter().destroyRepository();
         }
         super.onDestroy();
     }

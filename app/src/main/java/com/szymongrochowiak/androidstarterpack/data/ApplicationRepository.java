@@ -32,6 +32,11 @@ public class ApplicationRepository implements Repository {
     }
 
     @Override
+    public void start() {
+        Observable.from(mRepositoryList).forEach(Repository::start);
+    }
+
+    @Override
     public void destroy() {
         Observable.from(mRepositoryList).forEach(Repository::destroy);
     }

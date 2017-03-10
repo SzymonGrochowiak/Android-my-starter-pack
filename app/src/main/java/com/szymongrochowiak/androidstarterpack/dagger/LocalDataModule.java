@@ -16,13 +16,7 @@ public class LocalDataModule {
 
     @Provides
     @Singleton
-    Realm provideRealm() {
-        return Realm.getDefaultInstance();
-    }
-
-    @Provides
-    @Singleton
-    LocalRepository provideLocalRepository(Realm realm) {
-        return new LocalRepository(realm);
+    LocalRepository provideLocalRepository() {
+        return new LocalRepository();
     }
 }

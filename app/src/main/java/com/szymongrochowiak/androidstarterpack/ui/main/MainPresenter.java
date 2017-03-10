@@ -41,7 +41,11 @@ public class MainPresenter extends BasePresenter<MainView> {
         return new Random().nextInt(30);
     }
 
-    public void destroyRepositories() {
+    public void startRepository() {
+        mRepository.start();
+    }
+
+    public void destroyRepository() {
         mRepository.destroy();
     }
 }
