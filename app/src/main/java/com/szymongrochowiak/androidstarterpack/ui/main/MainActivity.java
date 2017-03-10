@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.szymongrochowiak.androidstarterpack.R;
 import com.szymongrochowiak.androidstarterpack.StarterPackApplication;
-import com.szymongrochowiak.androidstarterpack.data.network.ApiManager;
+import com.szymongrochowiak.androidstarterpack.data.ApplicationRepository;
 import com.szymongrochowiak.androidstarterpack.ui.common.activities.base.BaseActivity;
 
 import javax.inject.Inject;
@@ -30,7 +30,7 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter>
         implements MainView, NavigationView.OnNavigationItemSelectedListener {
 
     @Inject
-    ApiManager mApiManager;
+    ApplicationRepository mRepository;
 
     @BindView(R.id.textView)
     TextView mTextView;
@@ -47,6 +47,7 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter>
     protected void onCreate(Bundle savedInstanceState) {
         ((StarterPackApplication) getApplication()).getDaggerApplicationComponent().inject(this);
         super.onCreate(savedInstanceState);
+        getPresenter().startRepository();
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
@@ -62,11 +63,15 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter>
 
         mNavigationView.setNavigationItemSelectedListener(this);
 
-        getPresenter().fetchBerry();
+        getPresenter().queryBerry();
     }
 
     @Override
     protected void onDestroy() {
+        // TODO needed proper handling of configuration changes, consider changing this?
+        if (!isChangingConfigurations()) {
+            getPresenter().destroyRepository();
+        }
         super.onDestroy();
     }
 
@@ -123,7 +128,7 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter>
     @NonNull
     @Override
     public MainPresenter providePresenter() {
-        return new MainPresenter(mApiManager);
+        return new MainPresenter(mRepository);
     }
 
     @Override

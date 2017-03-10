@@ -1,30 +1,35 @@
 package com.szymongrochowiak.androidstarterpack.ui.main;
 
-import com.szymongrochowiak.androidstarterpack.data.network.ApiManager;
+import android.support.annotation.NonNull;
+
+import com.szymongrochowiak.androidstarterpack.data.ApplicationRepository;
 import com.szymongrochowiak.androidstarterpack.ui.common.mvp.BasePresenter;
 
 import java.util.Random;
 
 import rx.Subscription;
+import timber.log.Timber;
 
 /**
  * @author Szymon Grochowiak
  */
 public class MainPresenter extends BasePresenter<MainView> {
 
-    private ApiManager mApiManager;
+    @NonNull
+    private ApplicationRepository mRepository;
 
-    public MainPresenter(ApiManager apiManager) {
-        mApiManager = apiManager;
+    public MainPresenter(@NonNull ApplicationRepository repository) {
+        mRepository = repository;
     }
 
-    public void fetchBerry() {
-        Subscription fetchBerrySubscription = mApiManager.getBerry(getBerryId())
+    public void queryBerry() {
+        Subscription fetchBerrySubscription = mRepository.queryBerry(getBerryId())
                 .subscribe(berry -> {
                     if (isAttached()) {
                         getMvpView().showBerryName(berry.getName());
                     }
                 }, throwable -> {
+                    Timber.e(throwable);
                     if (isAttached()) {
                         getMvpView().showBerryFetchError(throwable.toString());
                     }
@@ -34,5 +39,13 @@ public class MainPresenter extends BasePresenter<MainView> {
 
     private int getBerryId() {
         return new Random().nextInt(30);
+    }
+
+    public void startRepository() {
+        mRepository.start();
+    }
+
+    public void destroyRepository() {
+        mRepository.destroy();
     }
 }

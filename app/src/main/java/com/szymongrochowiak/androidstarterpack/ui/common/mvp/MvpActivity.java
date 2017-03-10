@@ -13,6 +13,7 @@ import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
  */
 public abstract class MvpActivity<V extends MvpView, P extends MvpPresenter<V>> extends RxAppCompatActivity {
 
+    @Nullable
     private P mPresenter;
 
     @NonNull
@@ -28,11 +29,16 @@ public abstract class MvpActivity<V extends MvpView, P extends MvpPresenter<V>> 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mPresenter.detach();
+        if (mPresenter != null) {
+            mPresenter.detach();
+        }
     }
 
     @NonNull
     public P getPresenter() {
+        if (mPresenter == null) {
+            throw new NullPointerException("Presenter not attached");
+        }
         return mPresenter;
     }
 }
