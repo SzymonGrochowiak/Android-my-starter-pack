@@ -6,6 +6,7 @@ import com.szymongrochowiak.androidstarterpack.data.Repository;
 import com.szymongrochowiak.androidstarterpack.data.model.Berry;
 
 import io.realm.Realm;
+import io.realm.RealmModel;
 import rx.Observable;
 
 /**
@@ -22,7 +23,15 @@ public class LocalRepository implements Repository {
     @NonNull
     @Override
     public Observable<Berry> queryBerry(int id) {
-        return null;
+        Berry berry = mRealm.where(Berry.class).equalTo("id", id).findFirst();
+        return berry == null ? Observable.empty() : berry.asObservable();
+    }
+
+    public <E extends RealmModel> E saveToRepository(@NonNull E object) {
+        mRealm.beginTransaction();
+        E outputObject = mRealm.copyToRealmOrUpdate(object);
+        mRealm.commitTransaction();
+        return outputObject;
     }
 
     @Override

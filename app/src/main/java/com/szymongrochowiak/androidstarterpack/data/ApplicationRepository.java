@@ -27,8 +27,8 @@ public class ApplicationRepository implements Repository {
     @NonNull
     @Override
     public Observable<Berry> queryBerry(int id) {
-        return Observable.from(mRepositoryList).concatMap(
-                repository -> repository.queryBerry(id));
+        return Observable.from(mRepositoryList).concatMap(repository -> repository.queryBerry(id)).first(berry ->
+                berry != null);
     }
 
     @Override

@@ -30,7 +30,7 @@ public class NetworkRepository implements Repository {
     @Override
     public Observable<Berry> queryBerry(int id) {
         return mApiInterface.getBerry(id)
-                .compose(applySchedulers());
+                .compose(applySchedulers()).map(berry -> mLocalRepository.saveToRepository(berry));
     }
 
     @NonNull

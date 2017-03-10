@@ -8,6 +8,7 @@ import com.szymongrochowiak.androidstarterpack.ui.common.mvp.BasePresenter;
 import java.util.Random;
 
 import rx.Subscription;
+import timber.log.Timber;
 
 /**
  * @author Szymon Grochowiak
@@ -28,6 +29,7 @@ public class MainPresenter extends BasePresenter<MainView> {
                         getMvpView().showBerryName(berry.getName());
                     }
                 }, throwable -> {
+                    Timber.e(throwable);
                     if (isAttached()) {
                         getMvpView().showBerryFetchError(throwable.toString());
                     }
@@ -40,6 +42,6 @@ public class MainPresenter extends BasePresenter<MainView> {
     }
 
     public void destroyRepositories() {
-
+        mRepository.destroy();
     }
 }
