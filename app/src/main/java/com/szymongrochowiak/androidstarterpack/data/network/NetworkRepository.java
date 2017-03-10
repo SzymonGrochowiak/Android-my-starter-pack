@@ -7,6 +7,9 @@ import com.szymongrochowiak.androidstarterpack.data.local.LocalRepository;
 import com.szymongrochowiak.androidstarterpack.data.model.Berry;
 import com.szymongrochowiak.androidstarterpack.data.network.ApiInterface;
 
+import java.io.IOException;
+
+import io.realm.RealmObject;
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -30,10 +33,7 @@ public class NetworkRepository implements Repository {
     @Override
     public Observable<Berry> queryBerry(int id) {
         return mApiInterface.getBerry(id)
-                .compose(applySchedulers()).map(berry -> {
-                    Berry realmBerry = mLocalRepository.saveToRepository(berry);
-                    return realmBerry == null ? berry : realmBerry;
-                });
+                .compose(applySchedulers());
     }
 
     @Override
@@ -42,9 +42,17 @@ public class NetworkRepository implements Repository {
     }
 
     @NonNull
-    private <T> Observable.Transformer<T, T> applySchedulers() {
+    private <T extends RealmObject> Observable.Transformer<T, T> applySchedulers() {
         return observable -> observable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+                .observeOn(AndroidSchedulers.mainThread()).onErrorResumeNext(throwable -> {
+                    if (throwable instanceof IOException) {
+                        return Observable.empty();
+                    }
+                    return Observable.error(throwable);
+                }).map(object -> {
+                    T realmObject = mLocalRepository.saveToRepository(object);
+                    return realmObject == null ? object : realmObject;
+                });
     }
 
     @Override

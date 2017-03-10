@@ -53,6 +53,7 @@ public class LocalRepository implements Repository {
     public void destroy() {
         if (mRealm != null) {
             mRealm.close();
+            mRealm = null;
         }
     }
 
