@@ -67,7 +67,10 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter>
 
     @Override
     protected void onDestroy() {
-        getPresenter().destroyRepositories();
+        // TODO needed proper handling of configuration changes, consider changing this?
+        if (!isChangingConfigurations()) {
+            getPresenter().destroyRepositories();
+        }
         super.onDestroy();
     }
 

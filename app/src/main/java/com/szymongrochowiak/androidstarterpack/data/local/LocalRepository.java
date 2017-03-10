@@ -14,9 +14,10 @@ import rx.Observable;
  */
 public class LocalRepository implements Repository {
 
+    @NonNull
     private Realm mRealm;
 
-    public LocalRepository(Realm realm) {
+    public LocalRepository(@NonNull Realm realm) {
         mRealm = realm;
     }
 

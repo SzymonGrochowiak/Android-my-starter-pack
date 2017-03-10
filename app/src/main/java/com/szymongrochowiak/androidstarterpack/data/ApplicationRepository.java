@@ -17,8 +17,8 @@ public class ApplicationRepository implements Repository {
     @NonNull
     private final List<Repository> mRepositoryList;
 
-    public ApplicationRepository(Repository... repositories) {
-        mRepositoryList = Arrays.asList(repositories);
+    public ApplicationRepository(Repository... repositoriesByPriority) {
+        mRepositoryList = Arrays.asList(repositoriesByPriority);
         if (mRepositoryList.isEmpty()) {
             throw new IllegalStateException("It has to be at least one repository.");
         }
