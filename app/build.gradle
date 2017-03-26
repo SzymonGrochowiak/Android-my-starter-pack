@@ -18,6 +18,11 @@ android {
         exclude 'META-INF/notice.txt'
     }
 
+    dexOptions {
+        preDexLibraries = true
+        javaMaxHeapSize "4g"
+    }
+
     defaultConfig {
         applicationId "com.szymongrochowiak.androidstarterpack"
         minSdkVersion 16
