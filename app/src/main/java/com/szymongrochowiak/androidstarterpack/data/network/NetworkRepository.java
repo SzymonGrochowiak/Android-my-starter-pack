@@ -36,11 +36,6 @@ public class NetworkRepository implements Repository {
                 .compose(applySchedulers());
     }
 
-    @Override
-    public void start() {
-        // Nothing to start
-    }
-
     @NonNull
     private <T extends RealmObject> Observable.Transformer<T, T> applySchedulers() {
         return observable -> observable.subscribeOn(Schedulers.io())
@@ -53,10 +48,5 @@ public class NetworkRepository implements Repository {
                     T realmObject = mLocalRepository.saveToRepository(object);
                     return realmObject == null ? object : realmObject;
                 });
-    }
-
-    @Override
-    public void destroy() {
-        // Nothing to destroy
     }
 }

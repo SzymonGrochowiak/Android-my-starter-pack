@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.szymongrochowiak.androidstarterpack.data.Repository;
+import com.szymongrochowiak.androidstarterpack.data.RepositoryLifecycle;
 import com.szymongrochowiak.androidstarterpack.data.model.Berry;
 
 import io.realm.Realm;
@@ -13,22 +14,12 @@ import rx.Observable;
 /**
  * @author Szymon Grochowiak
  */
-public class LocalRepository implements Repository {
+public class LocalRepository implements Repository, RepositoryLifecycle {
 
     @Nullable
     private Realm mRealm;
 
     public LocalRepository() {
-    }
-
-    @NonNull
-    @Override
-    public Observable<Berry> queryBerry(int id) {
-        if (!isRealmAvailable()) {
-            return Observable.empty();
-        }
-        Berry berry = mRealm.where(Berry.class).equalTo("id", id).findFirst();
-        return berry == null ? Observable.empty() : berry.asObservable();
     }
 
     @Override
@@ -38,22 +29,34 @@ public class LocalRepository implements Repository {
         }
     }
 
+    @Override
+    public void destroy() {
+        if (mRealm != null) {
+            mRealm.close();
+            mRealm = null;
+        }
+    }
+
+    @NonNull
+    @Override
+    public Observable<Berry> queryBerry(int id) {
+        throwExceptionIfRealmNotAvailable();
+        Berry berry = mRealm.where(Berry.class).equalTo("id", id).findFirst();
+        return berry == null ? Observable.empty() : berry.asObservable();
+    }
+
     @Nullable
     public <E extends RealmModel> E saveToRepository(@NonNull E object) {
-        if (!isRealmAvailable()) {
-            return null;
-        }
+        throwExceptionIfRealmNotAvailable();
         mRealm.beginTransaction();
         E outputObject = mRealm.copyToRealmOrUpdate(object);
         mRealm.commitTransaction();
         return outputObject;
     }
 
-    @Override
-    public void destroy() {
-        if (mRealm != null) {
-            mRealm.close();
-            mRealm = null;
+    private void throwExceptionIfRealmNotAvailable() {
+        if (!isRealmAvailable()) {
+            throw new NullPointerException("Repository was not started");
         }
     }
 

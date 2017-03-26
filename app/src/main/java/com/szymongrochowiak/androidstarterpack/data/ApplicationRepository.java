@@ -12,7 +12,7 @@ import rx.Observable;
 /**
  * @author Szymon Grochowiak
  */
-public class ApplicationRepository implements Repository {
+public class ApplicationRepository implements Repository, RepositoryLifecycle {
 
     @NonNull
     private final List<Repository> mRepositoryList;
@@ -33,11 +33,19 @@ public class ApplicationRepository implements Repository {
 
     @Override
     public void start() {
-        Observable.from(mRepositoryList).forEach(Repository::start);
+        Observable.from(mRepositoryList).forEach(repository -> {
+            if (repository instanceof RepositoryLifecycle) {
+                ((RepositoryLifecycle) repository).start();
+            }
+        });
     }
 
     @Override
     public void destroy() {
-        Observable.from(mRepositoryList).forEach(Repository::destroy);
+        Observable.from(mRepositoryList).forEach(repository -> {
+            if (repository instanceof RepositoryLifecycle) {
+                ((RepositoryLifecycle) repository).destroy();
+            }
+        });
     }
 }

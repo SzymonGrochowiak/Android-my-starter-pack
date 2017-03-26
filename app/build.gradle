@@ -33,12 +33,14 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
-    /* TODO This should be uncommented when keys will be attached to the project, uncomment for build types
+    /* TODO #1 #2 This should be uncommented when keys will be attached to the project, uncomment for build types
     signingConfigs {
+         // TODO #1 add debug key to the project
         debug {
             storeFile file("debug.keystore")
         }
 
+        // TODO #2 add release key to the project
         releaseConfig {
             storeFile file("other.keystore")
             storePassword "android"
@@ -50,11 +52,13 @@ android {
 
     buildTypes {
         debug {
+            // TODO #1 uncomment
             //signingConfig signingConfigs.debug
             minifyEnabled false
         }
 
         release {
+            // TODO #2 uncomment
             //signingConfig signingConfigs.releaseConfig
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
