@@ -24,13 +24,6 @@ public class ApplicationRepository implements Repository, RepositoryLifecycle {
         }
     }
 
-    @NonNull
-    @Override
-    public Observable<Berry> queryBerry(int id) {
-        return Observable.from(mRepositoryList).concatMap(repository -> repository.queryBerry(id)).first(berry ->
-                berry != null);
-    }
-
     @Override
     public void start() {
         Observable.from(mRepositoryList).forEach(repository -> {
@@ -47,5 +40,12 @@ public class ApplicationRepository implements Repository, RepositoryLifecycle {
                 ((RepositoryLifecycle) repository).destroy();
             }
         });
+    }
+
+    @NonNull
+    @Override
+    public Observable<Berry> queryBerry(int id) {
+        return Observable.from(mRepositoryList).concatMap(repository -> repository.queryBerry(id)).first(berry ->
+                berry != null);
     }
 }

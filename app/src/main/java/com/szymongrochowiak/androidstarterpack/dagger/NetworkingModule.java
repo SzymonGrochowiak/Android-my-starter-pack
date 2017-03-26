@@ -63,7 +63,7 @@ public class NetworkingModule {
 
     @Provides
     @Singleton
-    NetworkRepository provideNetworkRepository(LocalRepository loacalRepository, Retrofit retrofit) {
-        return new NetworkRepository(loacalRepository, retrofit.create(ApiInterface.class));
+    NetworkRepository provideNetworkRepository(LocalRepository localRepository, Retrofit retrofit) {
+        return new NetworkRepository(localRepository.getLocalRepositoryWriter(), retrofit.create(ApiInterface.class));
     }
 }

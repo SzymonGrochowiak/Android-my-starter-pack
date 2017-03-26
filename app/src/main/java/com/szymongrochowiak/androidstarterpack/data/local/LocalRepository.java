@@ -1,14 +1,13 @@
 package com.szymongrochowiak.androidstarterpack.data.local;
 
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import com.szymongrochowiak.androidstarterpack.data.Repository;
 import com.szymongrochowiak.androidstarterpack.data.RepositoryLifecycle;
+import com.szymongrochowiak.androidstarterpack.data.local.realm.RealmLifecycleManager;
 import com.szymongrochowiak.androidstarterpack.data.model.Berry;
 
 import io.realm.Realm;
-import io.realm.RealmModel;
 import rx.Observable;
 
 /**
@@ -16,51 +15,41 @@ import rx.Observable;
  */
 public class LocalRepository implements Repository, RepositoryLifecycle {
 
-    @Nullable
-    private Realm mRealm;
+    @NonNull
+    private final RealmLifecycleManager mRealmLifecycleManager;
+    @NonNull
+    private final LocalRepositoryWriter mLocalRepositoryWriter;
 
     public LocalRepository() {
+        mRealmLifecycleManager = new RealmLifecycleManager();
+        mLocalRepositoryWriter = new LocalRepositoryWriter();
     }
 
     @Override
     public void start() {
-        if (!isRealmAvailable()) {
-            mRealm = Realm.getDefaultInstance();
-        }
+        mRealmLifecycleManager.start();
+        mLocalRepositoryWriter.setRealm(mRealmLifecycleManager.getRealm());
     }
 
     @Override
     public void destroy() {
-        if (mRealm != null) {
-            mRealm.close();
-            mRealm = null;
-        }
+        mRealmLifecycleManager.destroy();
+    }
+
+    @NonNull
+    private Realm getRealm() {
+        return mRealmLifecycleManager.getRealm();
+    }
+
+    @NonNull
+    public LocalRepositoryWriter getLocalRepositoryWriter() {
+        return mLocalRepositoryWriter;
     }
 
     @NonNull
     @Override
     public Observable<Berry> queryBerry(int id) {
-        throwExceptionIfRealmNotAvailable();
-        Berry berry = mRealm.where(Berry.class).equalTo("id", id).findFirst();
+        Berry berry = getRealm().where(Berry.class).equalTo("id", id).findFirst();
         return berry == null ? Observable.empty() : berry.asObservable();
-    }
-
-    @Nullable
-    public <E extends RealmModel> E saveToRepository(@NonNull E object) {
-        throwExceptionIfRealmNotAvailable();
-        mRealm.beginTransaction();
-        E outputObject = mRealm.copyToRealmOrUpdate(object);
-        mRealm.commitTransaction();
-        return outputObject;
-    }
-
-    private void throwExceptionIfRealmNotAvailable() {
-        if (!isRealmAvailable()) {
-            throw new NullPointerException("Repository was not started");
-        }
-    }
-
-    private boolean isRealmAvailable() {
-        return mRealm != null && !mRealm.isClosed();
     }
 }
