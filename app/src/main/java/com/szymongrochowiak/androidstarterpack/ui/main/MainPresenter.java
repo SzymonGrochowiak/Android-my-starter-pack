@@ -11,7 +11,6 @@ import java.util.Random;
 
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
-import timber.log.Timber;
 
 /**
  * @author Szymon Grochowiak
@@ -34,18 +33,20 @@ public class MainPresenter extends BasePresenter<MainView> {
         if (restoreViewStateIfExist()) {
             return;
         }
+        if (isViewAttached()) {
+            getView().showLoading();
+        }
         Subscription fetchBerrySubscription = mRepository.queryBerry(getBerryId()).observeOn(AndroidSchedulers
                 .mainThread())
                 .subscribe(berry -> {
                     mBerry = berry;
                     if (isViewAttached()) {
-                        getView().showBerryName(berry.getName());
+                        getView().showContent(mBerry);
                     }
                 }, throwable -> {
-                    Timber.e(throwable);
                     mErrorMessage = throwable.toString();
                     if (isViewAttached()) {
-                        getView().showBerryFetchError(mErrorMessage);
+                        getView().showError(mErrorMessage);
                     }
                 });
         getCompositeSubscription().add(fetchBerrySubscription);
@@ -54,11 +55,11 @@ public class MainPresenter extends BasePresenter<MainView> {
     private boolean restoreViewStateIfExist() {
         if (isViewAttached()) {
             if (mBerry != null) {
-                getView().showBerryName(mBerry.getName());
+                getView().showContent(mBerry);
                 return true;
             }
             if (mErrorMessage != null) {
-                getView().showBerryFetchError(mErrorMessage);
+                getView().showError(mErrorMessage);
                 return true;
             }
         }

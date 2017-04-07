@@ -11,11 +11,14 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.szymongrochowiak.androidstarterpack.R;
 import com.szymongrochowiak.androidstarterpack.StarterPackApplication;
 import com.szymongrochowiak.androidstarterpack.data.ApplicationRepository;
+import com.szymongrochowiak.androidstarterpack.data.model.Berry;
 import com.szymongrochowiak.androidstarterpack.ui.common.activities.base.BaseActivity;
 
 import javax.inject.Inject;
@@ -34,6 +37,8 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter>
 
     @BindView(R.id.textView)
     TextView mTextView;
+    @BindView(R.id.progressBar)
+    ProgressBar mProgressBar;
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
     @BindView(R.id.drawer_layout)
@@ -104,7 +109,6 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter>
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -126,18 +130,28 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter>
         } else if (id == R.id.nav_send) {
 
         }
-
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 
     @Override
-    public void showBerryName(String berryName) {
-        mTextView.setText(berryName);
+    public void showLoading() {
+        mProgressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
-    public void showBerryFetchError(String errorMessage) {
+    public void showContent(@NonNull Berry berry) {
+        hideLoading();
+        mTextView.setText(berry.getName());
+    }
+
+    @Override
+    public void showError(@NonNull String errorMessage) {
+        hideLoading();
         mTextView.setText(errorMessage);
+    }
+
+    private void hideLoading() {
+        mProgressBar.setVisibility(View.GONE);
     }
 }
