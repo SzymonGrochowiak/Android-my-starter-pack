@@ -2,14 +2,12 @@ package com.szymongrochowiak.androidstarterpack.ui.main;
 
 import android.support.annotation.NonNull;
 
-import com.hannesdorfmann.mosby3.mvp.MvpBasePresenter;
 import com.szymongrochowiak.androidstarterpack.data.ApplicationRepository;
 import com.szymongrochowiak.androidstarterpack.ui.common.mvp.BasePresenter;
 
 import java.util.Random;
 
 import rx.Subscription;
-import rx.subscriptions.CompositeSubscription;
 import timber.log.Timber;
 
 /**
@@ -40,7 +38,7 @@ public class MainPresenter extends BasePresenter<MainView> {
     }
 
     private int getBerryId() {
-        return new Random().nextInt(30);
+        return new Random().nextInt(20);
     }
 
     public void startRepository() {
