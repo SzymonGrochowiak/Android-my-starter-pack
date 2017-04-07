@@ -15,6 +15,7 @@ Since every project can have different configuration of libraries I create a sam
 | Name | Project site | Version |
 |---|---|---|
 | Dagger 2 | http://google.github.io/dagger/ |<a href='http://search.maven.org/#search%7Cga%7C1%7Cdagger'><img src='https://img.shields.io/maven-central/v/com.google.dagger/dagger.svg?maxAge=28800'></a>|
+| Mosby MVP | https://github.com/sockeqwe/mosby |<a href='http://search.maven.org/#search%7Cga%7C1%7Cmosby'><img src='https://img.shields.io/maven-central/v/com.hannesdorfmann.mosby3/mvp.svg?maxAge=28800'></a>|
 | Retrolambda | https://github.com/evant/gradle-retrolambda | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22me.tatarka%22%20AND%20a%3A%22gradle-retrolambda%22'><img src='https://img.shields.io/maven-central/v/me.tatarka/gradle-retrolambda.svg?maxAge=28800'></a> |
 | RxJava | https://github.com/ReactiveX/RxJava | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.reactivex%22%20AND%20a%3A%22rxjava%22'><img src='https://img.shields.io/maven-central/v/io.reactivex/rxjava.svg?maxAge=28800'></a> |
 | RxAndroid | https://github.com/ReactiveX/RxAndroid | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22io.reactivex%22%20AND%20a%3A%22rxandroid%22'><img src='https://img.shields.io/maven-central/v/io.reactivex/rxandroid.svg?maxAge=28800'></a> |
