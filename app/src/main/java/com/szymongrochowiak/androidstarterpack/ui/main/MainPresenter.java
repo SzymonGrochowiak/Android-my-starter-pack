@@ -2,12 +2,14 @@ package com.szymongrochowiak.androidstarterpack.ui.main;
 
 import android.support.annotation.NonNull;
 
+import com.hannesdorfmann.mosby3.mvp.MvpBasePresenter;
 import com.szymongrochowiak.androidstarterpack.data.ApplicationRepository;
 import com.szymongrochowiak.androidstarterpack.ui.common.mvp.BasePresenter;
 
 import java.util.Random;
 
 import rx.Subscription;
+import rx.subscriptions.CompositeSubscription;
 import timber.log.Timber;
 
 /**
@@ -25,13 +27,13 @@ public class MainPresenter extends BasePresenter<MainView> {
     public void queryBerry() {
         Subscription fetchBerrySubscription = mRepository.queryBerry(getBerryId())
                 .subscribe(berry -> {
-                    if (isAttached()) {
-                        getMvpView().showBerryName(berry.getName());
+                    if (isViewAttached()) {
+                        getView().showBerryName(berry.getName());
                     }
                 }, throwable -> {
                     Timber.e(throwable);
-                    if (isAttached()) {
-                        getMvpView().showBerryFetchError(throwable.toString());
+                    if (isViewAttached()) {
+                        getView().showBerryFetchError(throwable.toString());
                     }
                 });
         getCompositeSubscription().add(fetchBerrySubscription);

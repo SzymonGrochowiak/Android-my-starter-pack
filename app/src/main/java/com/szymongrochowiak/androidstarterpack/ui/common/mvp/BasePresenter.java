@@ -2,28 +2,29 @@ package com.szymongrochowiak.androidstarterpack.ui.common.mvp;
 
 import android.support.annotation.NonNull;
 
+import com.hannesdorfmann.mosby3.mvp.MvpBasePresenter;
+import com.hannesdorfmann.mosby3.mvp.MvpView;
+
 import rx.subscriptions.CompositeSubscription;
 
 /**
  * @author Szymon Grochowiak
  */
-public class BasePresenter<V extends MvpView> extends MvpPresenter<V> {
+public class BasePresenter<V extends MvpView> extends MvpBasePresenter<V> {
 
-    private CompositeSubscription mCompositeSubscription;
+    @NonNull
+    private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
 
+    @NonNull
     public CompositeSubscription getCompositeSubscription() {
         return mCompositeSubscription;
     }
 
     @Override
-    void attach(@NonNull V mvpView) {
-        super.attach(mvpView);
-        mCompositeSubscription = new CompositeSubscription();
-    }
-
-    @Override
-    void detach() {
-        mCompositeSubscription.unsubscribe();
-        super.detach();
+    public void detachView(boolean retainInstance) {
+        super.detachView(retainInstance);
+        if (!retainInstance) {
+            mCompositeSubscription.unsubscribe();
+        }
     }
 }

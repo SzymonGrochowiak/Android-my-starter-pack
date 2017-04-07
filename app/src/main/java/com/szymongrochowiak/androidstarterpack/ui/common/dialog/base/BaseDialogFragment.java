@@ -1,11 +1,11 @@
 package com.szymongrochowiak.androidstarterpack.ui.common.dialog.base;
 
-import com.szymongrochowiak.androidstarterpack.ui.common.mvp.MvpDialogFragment;
-import com.szymongrochowiak.androidstarterpack.ui.common.mvp.MvpPresenter;
-import com.szymongrochowiak.androidstarterpack.ui.common.mvp.MvpView;
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.MvpView;
 
 /**
  * @author Szymon Grochowiak
  */
-public abstract class BaseDialogFragment<V extends MvpView, P extends MvpPresenter<V>> extends MvpDialogFragment<V, P> {
+// TODO resolve this - no class to extend in mosby library
+public abstract class BaseDialogFragment<V extends MvpView, P extends MvpPresenter<V>> {
 }

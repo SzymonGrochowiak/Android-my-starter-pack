@@ -43,6 +43,12 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter>
     @BindView(R.id.nav_view)
     NavigationView mNavigationView;
 
+    @NonNull
+    @Override
+    public MainPresenter createPresenter() {
+        return new MainPresenter(mRepository);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         ((StarterPackApplication) getApplication()).getDaggerApplicationComponent().inject(this);
@@ -123,12 +129,6 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter>
 
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    @NonNull
-    @Override
-    public MainPresenter providePresenter() {
-        return new MainPresenter(mRepository);
     }
 
     @Override

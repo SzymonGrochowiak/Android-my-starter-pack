@@ -1,8 +1,8 @@
 package com.szymongrochowiak.androidstarterpack.ui.common.fragments.base;
 
-import com.szymongrochowiak.androidstarterpack.ui.common.mvp.MvpFragment;
-import com.szymongrochowiak.androidstarterpack.ui.common.mvp.MvpView;
-import com.szymongrochowiak.androidstarterpack.ui.common.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.MvpFragment;
+import com.hannesdorfmann.mosby3.mvp.MvpPresenter;
+import com.hannesdorfmann.mosby3.mvp.MvpView;
 
 /**
  * @author Szymon Grochowiak

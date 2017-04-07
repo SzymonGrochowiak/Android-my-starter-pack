@@ -1,6 +1,6 @@
 package com.szymongrochowiak.androidstarterpack.ui.main;
 
-import com.szymongrochowiak.androidstarterpack.ui.common.mvp.MvpView;
+import com.hannesdorfmann.mosby3.mvp.MvpView;
 
 /**
  * @author Szymon Grochowiak
