@@ -7,7 +7,6 @@ import com.hannesdorfmann.mosby3.mvp.MvpBasePresenter;
 import com.hannesdorfmann.mosby3.mvp.MvpView;
 import com.szymongrochowiak.androidstarterpack.StarterPackApplication;
 import com.szymongrochowiak.androidstarterpack.dagger.ApplicationComponent;
-import com.szymongrochowiak.androidstarterpack.dagger.DaggerApplicationComponent;
 
 /**
  * @author Szymon Grochowiak

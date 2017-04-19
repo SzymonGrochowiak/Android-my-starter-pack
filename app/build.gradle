@@ -103,7 +103,7 @@ dependencies {
 
     // RxJava
     compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'io.reactivex:rxjava:1.2.7'
+    compile 'io.reactivex:rxjava:1.2.9'
 
     // OkHttp
     compile 'com.squareup.okhttp3:okhttp:3.6.0'
@@ -123,7 +123,7 @@ dependencies {
 
     // Test libraries
     testCompile 'junit:junit:4.12'
-    testCompile 'org.mockito:mockito-core:1.10.19'
+    testCompile 'org.mockito:mockito-core:2.7.22'
 
     // Android test libraries
     androidTestCompile('com.android.support.test:runner:0.5', {

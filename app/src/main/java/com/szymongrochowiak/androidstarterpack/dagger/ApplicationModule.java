@@ -2,8 +2,6 @@ package com.szymongrochowiak.androidstarterpack.dagger;
 
 import android.app.Application;
 
-import com.szymongrochowiak.androidstarterpack.data.Repository;
-
 import javax.inject.Singleton;
 
 import dagger.Module;

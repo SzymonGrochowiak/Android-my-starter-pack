@@ -16,7 +16,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.szymongrochowiak.androidstarterpack.R;
-import com.szymongrochowiak.androidstarterpack.StarterPackApplication;
 import com.szymongrochowiak.androidstarterpack.data.model.Berry;
 import com.szymongrochowiak.androidstarterpack.ui.common.activities.base.BaseActivity;
 import com.szymongrochowiak.androidstarterpack.ui.main.dagger.DaggerMainComponent;
