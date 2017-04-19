@@ -95,8 +95,8 @@ dependencies {
     compile 'com.hannesdorfmann.mosby3:mvp:3.0.2'
 
     // Dagger 2
-    compile 'com.google.dagger:dagger:2.9'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.9'
+    compile 'com.google.dagger:dagger:2.10'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.10'
 
     // Gson
     compile 'com.google.code.gson:gson:2.8.0'

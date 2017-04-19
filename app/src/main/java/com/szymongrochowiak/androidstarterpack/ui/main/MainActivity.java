@@ -17,11 +17,10 @@ import android.widget.TextView;
 
 import com.szymongrochowiak.androidstarterpack.R;
 import com.szymongrochowiak.androidstarterpack.StarterPackApplication;
-import com.szymongrochowiak.androidstarterpack.data.ApplicationRepository;
 import com.szymongrochowiak.androidstarterpack.data.model.Berry;
 import com.szymongrochowiak.androidstarterpack.ui.common.activities.base.BaseActivity;
-
-import javax.inject.Inject;
+import com.szymongrochowiak.androidstarterpack.ui.main.dagger.DaggerMainComponent;
+import com.szymongrochowiak.androidstarterpack.ui.main.dagger.MainComponent;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,8 +31,8 @@ import butterknife.ButterKnife;
 public class MainActivity extends BaseActivity<MainView, MainPresenter>
         implements MainView, NavigationView.OnNavigationItemSelectedListener {
 
-    @Inject
-    ApplicationRepository mRepository;
+    @NonNull
+    private MainComponent mMainComponent;
 
     @BindView(R.id.textView)
     TextView mTextView;
@@ -48,15 +47,19 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter>
     @BindView(R.id.nav_view)
     NavigationView mNavigationView;
 
+    @Override
+    protected void injectDependencies() {
+        mMainComponent = DaggerMainComponent.builder().applicationComponent(getDaggerApplicationComponent()).build();
+    }
+
     @NonNull
     @Override
     public MainPresenter createPresenter() {
-        return new MainPresenter(mRepository);
+        return mMainComponent.presenter();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ((StarterPackApplication) getApplication()).getDaggerApplicationComponent().inject(this);
         super.onCreate(savedInstanceState);
         getPresenter().startRepository();
         setContentView(R.layout.activity_main);

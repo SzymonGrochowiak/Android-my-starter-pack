@@ -3,7 +3,8 @@ package com.szymongrochowiak.androidstarterpack.ui.main;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.szymongrochowiak.androidstarterpack.data.ApplicationRepository;
+import com.szymongrochowiak.androidstarterpack.data.Repository;
+import com.szymongrochowiak.androidstarterpack.data.RepositoryLifecycle;
 import com.szymongrochowiak.androidstarterpack.data.model.Berry;
 import com.szymongrochowiak.androidstarterpack.ui.common.mvp.BasePresenter;
 
@@ -18,15 +19,18 @@ import rx.android.schedulers.AndroidSchedulers;
 public class MainPresenter extends BasePresenter<MainView> {
 
     @NonNull
-    private ApplicationRepository mRepository;
+    private Repository mRepository;
+    @NonNull
+    private RepositoryLifecycle mRepositoryLifecycle;
 
     @Nullable
     private Berry mBerry;
     @Nullable
     private String mErrorMessage;
 
-    public MainPresenter(@NonNull ApplicationRepository repository) {
+    public MainPresenter(@NonNull Repository repository, @NonNull RepositoryLifecycle repositoryLifecycle) {
         mRepository = repository;
+        mRepositoryLifecycle = repositoryLifecycle;
     }
 
     public void queryBerry() {
@@ -71,10 +75,10 @@ public class MainPresenter extends BasePresenter<MainView> {
     }
 
     public void startRepository() {
-        mRepository.start();
+        mRepositoryLifecycle.start();
     }
 
     public void destroyRepository() {
-        mRepository.destroy();
+        mRepositoryLifecycle.destroy();
     }
 }
