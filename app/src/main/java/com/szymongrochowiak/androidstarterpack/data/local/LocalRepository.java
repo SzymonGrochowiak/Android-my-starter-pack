@@ -7,8 +7,8 @@ import com.szymongrochowiak.androidstarterpack.data.RepositoryLifecycle;
 import com.szymongrochowiak.androidstarterpack.data.local.realm.RealmLifecycleManager;
 import com.szymongrochowiak.androidstarterpack.data.model.Berry;
 
+import io.reactivex.Observable;
 import io.realm.Realm;
-import rx.Observable;
 
 /**
  * @author Szymon Grochowiak
@@ -50,6 +50,7 @@ public class LocalRepository implements Repository, RepositoryLifecycle {
     @Override
     public Observable<Berry> queryBerry(int id) {
         Berry berry = getRealm().where(Berry.class).equalTo("id", id).findFirst();
-        return berry == null ? Observable.empty() : berry.asObservable();
+        // TODO this has to be reviewed
+        return berry == null ? Observable.empty() : Observable.just(berry);
     }
 }

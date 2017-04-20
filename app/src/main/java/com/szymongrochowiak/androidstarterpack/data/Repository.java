@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.szymongrochowiak.androidstarterpack.data.model.Berry;
 
-import rx.Observable;
+import io.reactivex.Observable;
 
 /**
  * @author Szymon Grochowiak

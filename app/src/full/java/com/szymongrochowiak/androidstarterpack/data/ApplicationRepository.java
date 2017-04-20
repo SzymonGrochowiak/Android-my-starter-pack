@@ -7,7 +7,7 @@ import com.szymongrochowiak.androidstarterpack.data.model.Berry;
 import java.util.Arrays;
 import java.util.List;
 
-import rx.Observable;
+import io.reactivex.Observable;
 
 /**
  * @author Szymon Grochowiak
@@ -26,7 +26,7 @@ public class ApplicationRepository implements Repository, RepositoryLifecycle {
 
     @Override
     public void start() {
-        Observable.from(mRepositoryList).forEach(repository -> {
+        Observable.fromIterable(mRepositoryList).forEach(repository -> {
             if (repository instanceof RepositoryLifecycle) {
                 ((RepositoryLifecycle) repository).start();
             }
@@ -35,7 +35,7 @@ public class ApplicationRepository implements Repository, RepositoryLifecycle {
 
     @Override
     public void destroy() {
-        Observable.from(mRepositoryList).forEach(repository -> {
+        Observable.fromIterable(mRepositoryList).forEach(repository -> {
             if (repository instanceof RepositoryLifecycle) {
                 ((RepositoryLifecycle) repository).destroy();
             }
@@ -45,7 +45,8 @@ public class ApplicationRepository implements Repository, RepositoryLifecycle {
     @NonNull
     @Override
     public Observable<Berry> queryBerry(int id) {
-        return Observable.from(mRepositoryList).concatMap(repository -> repository.queryBerry(id)).first(berry ->
-                berry != null);
+        return Observable.fromIterable(mRepositoryList)
+                .concatMap(repository -> repository.queryBerry(id))
+                .filter(berry -> berry != null);
     }
 }

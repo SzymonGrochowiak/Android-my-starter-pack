@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 import com.hannesdorfmann.mosby3.mvp.MvpBasePresenter;
 import com.hannesdorfmann.mosby3.mvp.MvpView;
 
-import rx.subscriptions.CompositeSubscription;
+import io.reactivex.disposables.CompositeDisposable;
 
 /**
  * @author Szymon Grochowiak
@@ -13,18 +13,18 @@ import rx.subscriptions.CompositeSubscription;
 public class BasePresenter<V extends MvpView> extends MvpBasePresenter<V> {
 
     @NonNull
-    private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
+    private CompositeDisposable mCompositeDisposable = new CompositeDisposable();
 
     @NonNull
-    public CompositeSubscription getCompositeSubscription() {
-        return mCompositeSubscription;
+    public CompositeDisposable getCompositeDisposable() {
+        return mCompositeDisposable;
     }
 
     @Override
     public void detachView(boolean retainInstance) {
         super.detachView(retainInstance);
         if (!retainInstance) {
-            mCompositeSubscription.unsubscribe();
+            mCompositeDisposable.dispose();
         }
     }
 }

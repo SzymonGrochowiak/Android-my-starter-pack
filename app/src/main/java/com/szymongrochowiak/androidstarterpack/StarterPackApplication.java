@@ -5,8 +5,8 @@ import android.app.Application;
 import com.szymongrochowiak.androidstarterpack.dagger.ApplicationComponent;
 import com.szymongrochowiak.androidstarterpack.dagger.DaggerApplicationComponent;
 
+import io.reactivex.plugins.RxJavaPlugins;
 import io.realm.Realm;
-import rx.plugins.RxJavaHooks;
 import timber.log.Timber;
 
 /**
@@ -41,7 +41,7 @@ public class StarterPackApplication extends Application {
     }
 
     private void initRxJava() {
-        RxJavaHooks.setOnError(throwable -> Timber.e(throwable, "RxError"));
+        RxJavaPlugins.setErrorHandler(throwable -> Timber.e(throwable, "RxError"));
     }
 
     public ApplicationComponent getDaggerApplicationComponent() {

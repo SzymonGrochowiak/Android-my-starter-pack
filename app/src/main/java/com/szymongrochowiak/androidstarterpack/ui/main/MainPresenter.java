@@ -10,8 +10,8 @@ import com.szymongrochowiak.androidstarterpack.ui.common.mvp.BasePresenter;
 
 import java.util.Random;
 
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 
 /**
  * @author Szymon Grochowiak
@@ -40,7 +40,7 @@ public class MainPresenter extends BasePresenter<MainView> {
         if (isViewAttached()) {
             getView().showLoading();
         }
-        Subscription fetchBerrySubscription = mRepository.queryBerry(getBerryId()).observeOn(AndroidSchedulers
+        Disposable fetchBerryDisposable = mRepository.queryBerry(getBerryId()).observeOn(AndroidSchedulers
                 .mainThread())
                 .subscribe(berry -> {
                     mBerry = berry;
@@ -53,7 +53,7 @@ public class MainPresenter extends BasePresenter<MainView> {
                         getView().showError(mErrorMessage);
                     }
                 });
-        getCompositeSubscription().add(fetchBerrySubscription);
+        getCompositeDisposable().add(fetchBerryDisposable);
     }
 
     private boolean restoreViewStateIfExist() {
