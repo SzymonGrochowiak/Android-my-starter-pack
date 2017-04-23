@@ -40,8 +40,7 @@ public class MainPresenter extends BasePresenter<MainView> {
         if (isViewAttached()) {
             getView().showLoading();
         }
-        Disposable fetchBerryDisposable = mRepository.queryBerry(getBerryId()).observeOn(AndroidSchedulers
-                .mainThread())
+        Disposable fetchBerryDisposable = mRepository.queryBerry(getBerryId())
                 .subscribe(berry -> {
                     mBerry = berry;
                     if (isViewAttached()) {
