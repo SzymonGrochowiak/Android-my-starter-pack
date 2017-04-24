@@ -50,6 +50,10 @@ public class MainPresenter extends BasePresenter<MainView> {
                     if (isViewAttached()) {
                         getView().showError(mErrorMessage);
                     }
+                }, () -> {
+                    if (isViewAttached()) {
+                        getView().hideLoading();
+                    }
                 });
         getCompositeDisposable().add(fetchBerryDisposable);
     }

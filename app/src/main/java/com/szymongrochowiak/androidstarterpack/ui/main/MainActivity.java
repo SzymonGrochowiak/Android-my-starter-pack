@@ -143,17 +143,16 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter>
 
     @Override
     public void showContent(@NonNull Berry berry) {
-        hideLoading();
         mTextView.setText(berry.getName());
     }
 
     @Override
     public void showError(@NonNull String errorMessage) {
-        hideLoading();
         mTextView.setText(errorMessage);
     }
 
-    private void hideLoading() {
+    @Override
+    public void hideLoading() {
         mProgressBar.setVisibility(View.GONE);
     }
 }

@@ -12,6 +12,8 @@ public interface MainView extends MvpView {
 
     void showLoading();
 
+    void hideLoading();
+
     void showContent(@NonNull Berry berry);
 
     void showError(@NonNull String errorMessage);
