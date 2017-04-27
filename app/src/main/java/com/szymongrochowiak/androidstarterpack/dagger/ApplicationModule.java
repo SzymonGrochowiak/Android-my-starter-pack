@@ -21,7 +21,7 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    Application providesStarterPackApplication() {
+    protected Application providesStarterPackApplication() {
         return mApplication;
     }
 }

@@ -19,20 +19,20 @@ public class RepositoryModule {
 
     @Provides
     @Singleton
-    ApplicationRepository provideApplicationRepository(NetworkRepository networkRepository, LocalRepository
+    protected ApplicationRepository provideApplicationRepository(NetworkRepository networkRepository, LocalRepository
             localRepository) {
         return new ApplicationRepository(networkRepository, localRepository);
     }
 
     @Provides
     @Singleton
-    Repository provideRepository(ApplicationRepository applicationRepository) {
+    protected Repository provideRepository(ApplicationRepository applicationRepository) {
         return applicationRepository;
     }
 
     @Provides
     @Singleton
-    RepositoryLifecycle provideRepositoryLifecycle(ApplicationRepository applicationRepository) {
+    protected RepositoryLifecycle provideRepositoryLifecycle(ApplicationRepository applicationRepository) {
         return applicationRepository;
     }
 }

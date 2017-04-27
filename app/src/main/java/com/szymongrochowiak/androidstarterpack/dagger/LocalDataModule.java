@@ -15,7 +15,7 @@ public class LocalDataModule {
 
     @Provides
     @Singleton
-    LocalRepository provideLocalRepository() {
+    protected LocalRepository provideLocalRepository() {
         return new LocalRepository();
     }
 }

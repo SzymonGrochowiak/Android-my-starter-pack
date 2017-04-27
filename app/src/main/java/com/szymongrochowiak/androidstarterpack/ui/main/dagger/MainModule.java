@@ -15,7 +15,7 @@ public class MainModule {
 
     @Provides
     @MainScope
-    MainPresenter providePresenter(Repository repository, RepositoryLifecycle repositoryLifecycle) {
+    protected MainPresenter providePresenter(Repository repository, RepositoryLifecycle repositoryLifecycle) {
         return new MainPresenter(repository, repositoryLifecycle);
     }
 }

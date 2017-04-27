@@ -31,20 +31,20 @@ public class NetworkingModule {
 
     @Provides
     @Singleton
-    Gson provideGson() {
+    protected Gson provideGson() {
         return new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
                 .create();
     }
 
     @Provides
     @Singleton
-    Cache provideCache(Application application) {
+    protected Cache provideCache(Application application) {
         return new Cache(application.getCacheDir(), CACHE_SIZE_MB);
     }
 
     @Provides
     @Singleton
-    OkHttpClient provideOkHttpClient() {
+    protected OkHttpClient provideOkHttpClient() {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         return new OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor).build();
@@ -52,7 +52,7 @@ public class NetworkingModule {
 
     @Provides
     @Singleton
-    Retrofit provideRetrofit(Gson gson, OkHttpClient okHttpClient) {
+    protected Retrofit provideRetrofit(Gson gson, OkHttpClient okHttpClient) {
         return new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -63,7 +63,7 @@ public class NetworkingModule {
 
     @Provides
     @Singleton
-    NetworkRepository provideNetworkRepository(LocalRepository localRepository, Retrofit retrofit) {
+    protected NetworkRepository provideNetworkRepository(LocalRepository localRepository, Retrofit retrofit) {
         return new NetworkRepository(localRepository.getLocalRepositoryWriter(), retrofit.create(ApiInterface.class));
     }
 }
