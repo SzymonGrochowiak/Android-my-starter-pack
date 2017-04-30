@@ -19,7 +19,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
  */
 public class ApplicationRepository implements Repository, RepositoryLifecycle {
 
-    private final static int INTERNET_CONNECTION_DELAY_SECONDS = 3;
+    public static final boolean SIMULATE_CONNECTION_DELAY = false;
+    private static final int INTERNET_CONNECTION_DELAY_SECONDS = 3;
 
     public ApplicationRepository(Repository... repositoriesByPriority) {
         // do nothing
@@ -48,8 +49,11 @@ public class ApplicationRepository implements Repository, RepositoryLifecycle {
                         ".co\\/api\\/v2\\/berry-firmness\\/4\\/\",\"name\":\"very-hard\"},\"growth_time\":4,\"id\":6," +
                         "\"size\":28}",
                 Berry.class);
-        return Observable.timer(INTERNET_CONNECTION_DELAY_SECONDS, TimeUnit.SECONDS)
-                .observeOn(AndroidSchedulers.mainThread())
-                .flatMap(aLong -> Observable.just(berry));
+        if (SIMULATE_CONNECTION_DELAY) {
+            return Observable.timer(INTERNET_CONNECTION_DELAY_SECONDS, TimeUnit.SECONDS)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .flatMap(aLong -> Observable.just(berry));
+        }
+        return Observable.just(berry);
     }
 }

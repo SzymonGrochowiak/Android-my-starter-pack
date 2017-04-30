@@ -6,24 +6,25 @@ import com.szymongrochowiak.androidstarterpack.data.ApplicationRepository;
 import com.szymongrochowiak.androidstarterpack.data.Repository;
 import com.szymongrochowiak.androidstarterpack.test.utils.RxJavaImmediateSchedulersRule;
 
+import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
+import org.mockito.ArgumentMatchers;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 
-import io.reactivex.Scheduler;
-import io.reactivex.android.plugins.RxAndroidPlugins;
-import io.reactivex.internal.schedulers.ExecutorScheduler;
-import io.reactivex.plugins.RxJavaPlugins;
 import it.cosenonjaviste.daggermock.DaggerMockRule;
 
-import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.verify;
 
 /**
  * @author Szymon Grochowiak
  */
 public class MainPresenterTest {
 
+    @Mock
+    MainView mMainView;
     Repository mRepository;
     MainPresenter mMainPresenter;
 
@@ -43,11 +44,19 @@ public class MainPresenterTest {
     @Before
     public void before() {
         mMainPresenter = new MainPresenter(mRepository, (ApplicationRepository) mRepository);
+        mMainPresenter.attachView(mMainView);
+    }
+
+    @After
+    public void after() {
+        mMainPresenter.detachView(false);
     }
 
     @Test
-    public void check_berry_querying_correctness() throws Exception {
+    public void show_content() throws Exception {
         mMainPresenter.queryBerry();
-        assertEquals(2, 0);
+        verify(mMainView, Mockito.times(1)).showLoading();
+        verify(mMainView, Mockito.times(1)).showContent(ArgumentMatchers.any());
+        verify(mMainView, Mockito.times(1)).hideLoading();
     }
 }
