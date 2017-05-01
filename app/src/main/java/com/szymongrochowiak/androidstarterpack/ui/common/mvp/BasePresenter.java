@@ -27,4 +27,10 @@ public class BasePresenter<V extends MvpView> extends MvpBasePresenter<V> {
             mCompositeDisposable.dispose();
         }
     }
+
+    public void sendToView(ViewAction<V> viewAction) {
+        if (isViewAttached()) {
+            viewAction.perform(getView());
+        }
+    }
 }
