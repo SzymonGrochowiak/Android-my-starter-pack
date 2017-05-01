@@ -11,7 +11,7 @@ Since every project can have different configuration of libraries I create a sam
 * provide a sample Android application as a scheme for new projects
 
 # Libraries
-
+## Basic
 | Name | Project site | Version |
 |---|---|---|
 | Dagger 2 | http://google.github.io/dagger/ |<a href='http://search.maven.org/#search%7Cga%7C1%7Cdagger'><img src='https://img.shields.io/maven-central/v/com.google.dagger/dagger.svg?maxAge=28800'></a>|
@@ -28,6 +28,12 @@ Since every project can have different configuration of libraries I create a sam
 | Timber | https://github.com/JakeWharton/timber | <a href='http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.jakewharton.timber%22'><img src='https://img.shields.io/maven-central/v/com.jakewharton.timber/timber.svg?maxAge=28800'></a> |
 | Butterknife | http://jakewharton.github.io/butterknife/ | <a href='http://search.maven.org/#search%7Cga%7C1%7Cbutterknife'><img src='https://img.shields.io/maven-central/v/com.jakewharton/butterknife.svg?maxAge=28800'></a> |
 
+## Test
+| Name | Project site | Version |
+|---|---|---|
+| JUnit 4 | https://github.com/junit-team/junit4 |<a href='https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22junit%22%20AND%20a%3A%22junit%22'><img src='https://img.shields.io/maven-central/v/junit/junit.svg?maxAge=28800'></a>|
+| Mockito | https://github.com/mockito/mockito |<a href='https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.mockito%22'><img src='https://img.shields.io/maven-central/v/org.mockito/mockito-core.svg?maxAge=28800'></a>|
+| Dagger Mock | https://github.com/fabioCollini/DaggerMock |<a href='https://jitpack.io/#com.github.fabioCollini/DaggerMock'><img src='https://jitpack.io/v/com.github.fabioCollini/DaggerMock.svg'></a>|
 
 # License
 
