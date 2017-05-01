@@ -2,6 +2,7 @@ package com.szymongrochowiak.androidstarterpack.ui.main;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -21,6 +22,8 @@ import com.szymongrochowiak.androidstarterpack.ui.common.activities.base.BaseAct
 import com.szymongrochowiak.androidstarterpack.ui.main.dagger.DaggerMainComponent;
 import com.szymongrochowiak.androidstarterpack.ui.main.dagger.MainComponent;
 
+import java.util.Random;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -29,6 +32,8 @@ import butterknife.ButterKnife;
  */
 public class MainActivity extends BaseActivity<MainView, MainPresenter>
         implements MainView, NavigationView.OnNavigationItemSelectedListener {
+
+    private static final String BUNDLE_KEY_BERRY_ID = "berry_id";
 
     @NonNull
     private MainComponent mMainComponent;
@@ -45,6 +50,9 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter>
     FloatingActionButton mFloatingActionButton;
     @BindView(R.id.nav_view)
     NavigationView mNavigationView;
+
+    @Nullable
+    private Integer mBerryId;
 
     @Override
     protected void injectDependencies() {
@@ -76,7 +84,12 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter>
 
         mNavigationView.setNavigationItemSelectedListener(this);
 
-        getPresenter().queryBerry();
+        if (savedInstanceState == null) {
+            mBerryId = generateBerryId();
+        } else {
+            mBerryId = savedInstanceState.getInt(BUNDLE_KEY_BERRY_ID);
+        }
+        getPresenter().queryBerry(mBerryId);
     }
 
     @Override
@@ -86,6 +99,12 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter>
             getPresenter().destroyRepository();
         }
         super.onDestroy();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putInt(BUNDLE_KEY_BERRY_ID, mBerryId);
+        super.onSaveInstanceState(outState);
     }
 
     @Override
@@ -154,5 +173,9 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter>
     @Override
     public void hideLoading() {
         mProgressBar.setVisibility(View.GONE);
+    }
+
+    private int generateBerryId() {
+        return new Random().nextInt(20);
     }
 }

@@ -12,11 +12,15 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 
+import io.reactivex.Observable;
 import it.cosenonjaviste.daggermock.DaggerMockRule;
 
+import static com.szymongrochowiak.androidstarterpack.test.utils.TestUtils.onlyOnce;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  * @author Szymon Grochowiak
@@ -27,6 +31,7 @@ public class MainPresenterTest {
     MainView mMainView;
     Repository mRepository;
     MainPresenter mMainPresenter;
+    Repository mSpyRepository;
 
     @Rule
     public RxJavaImmediateSchedulersRule mRxJavaSchedulersRule = new RxJavaImmediateSchedulersRule();
@@ -43,7 +48,8 @@ public class MainPresenterTest {
 
     @Before
     public void before() {
-        mMainPresenter = new MainPresenter(mRepository, (ApplicationRepository) mRepository);
+        mSpyRepository = spy(mRepository);
+        mMainPresenter = new MainPresenter(mSpyRepository, (ApplicationRepository) mSpyRepository);
         mMainPresenter.attachView(mMainView);
     }
 
@@ -54,9 +60,20 @@ public class MainPresenterTest {
 
     @Test
     public void show_content() throws Exception {
-        mMainPresenter.queryBerry();
-        verify(mMainView, Mockito.times(1)).showLoading();
-        verify(mMainView, Mockito.times(1)).showContent(ArgumentMatchers.any());
-        verify(mMainView, Mockito.times(1)).hideLoading();
+        mMainPresenter.queryBerry(1);
+        verify(mMainView, onlyOnce()).showLoading();
+        verify(mMainView, onlyOnce()).showContent(ArgumentMatchers.any());
+        verify(mMainView, onlyOnce()).hideLoading();
+        verify(mMainView, never()).showError(ArgumentMatchers.any());
+    }
+
+    @Test
+    public void show_error() throws Exception {
+        when(mSpyRepository.queryBerry(1)).thenReturn(Observable.error(new RuntimeException("Test error")));
+        mMainPresenter.queryBerry(1);
+        verify(mMainView, onlyOnce()).showLoading();
+        verify(mMainView, onlyOnce()).showError(ArgumentMatchers.any());
+        verify(mMainView, onlyOnce()).hideLoading();
+        verify(mMainView, never()).showContent(ArgumentMatchers.any());
     }
 }

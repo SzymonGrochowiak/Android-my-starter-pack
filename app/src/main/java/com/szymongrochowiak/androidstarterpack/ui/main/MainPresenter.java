@@ -32,48 +32,35 @@ public class MainPresenter extends BasePresenter<MainView> {
         mRepositoryLifecycle = repositoryLifecycle;
     }
 
-    public void queryBerry() {
+    public void queryBerry(int berryId) {
         if (restoreViewStateIfExist()) {
             return;
         }
         if (isViewAttached()) {
             getView().showLoading();
         }
-        Disposable fetchBerryDisposable = mRepository.queryBerry(getBerryId())
+        Disposable fetchBerryDisposable = mRepository.queryBerry(berryId)
                 .subscribe(berry -> {
                     mBerry = berry;
-                    if (isViewAttached()) {
-                        getView().showContent(mBerry);
-                    }
+                    sendToView(view -> view.showContent(mBerry));
                 }, throwable -> {
                     mErrorMessage = throwable.toString();
-                    if (isViewAttached()) {
-                        getView().showError(mErrorMessage);
-                    }
-                }, () -> {
-                    if (isViewAttached()) {
-                        getView().hideLoading();
-                    }
-                });
+                    sendToView(view -> view.showError(mErrorMessage));
+                    sendToView(MainView::hideLoading);
+                }, () -> sendToView(MainView::hideLoading));
         getCompositeDisposable().add(fetchBerryDisposable);
     }
 
     private boolean restoreViewStateIfExist() {
-        if (isViewAttached()) {
-            if (mBerry != null) {
-                getView().showContent(mBerry);
-                return true;
-            }
-            if (mErrorMessage != null) {
-                getView().showError(mErrorMessage);
-                return true;
-            }
+        if (mBerry != null) {
+            sendToView(view -> view.showContent(mBerry));
+            return true;
+        }
+        if (mErrorMessage != null) {
+            sendToView(view -> view.showError(mErrorMessage));
+            return true;
         }
         return false;
-    }
-
-    private int getBerryId() {
-        return new Random().nextInt(20);
     }
 
     public void startRepository() {

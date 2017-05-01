@@ -7,8 +7,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.szymongrochowiak.androidstarterpack.data.model.Berry;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
@@ -19,6 +17,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
  */
 public class ApplicationRepository implements Repository, RepositoryLifecycle {
 
+    // For tests issues this has to be false
     public static final boolean SIMULATE_CONNECTION_DELAY = false;
     private static final int INTERNET_CONNECTION_DELAY_SECONDS = 3;
 
