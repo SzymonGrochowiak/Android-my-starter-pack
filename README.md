@@ -35,6 +35,16 @@ Since every project can have different configuration of libraries I create a sam
 | Mockito | https://github.com/mockito/mockito |<a href='https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.mockito%22'><img src='https://img.shields.io/maven-central/v/org.mockito/mockito-core.svg?maxAge=28800'></a>|
 | Dagger Mock | https://github.com/fabioCollini/DaggerMock |<a href='https://jitpack.io/#com.github.fabioCollini/DaggerMock'><img src='https://jitpack.io/v/com.github.fabioCollini/DaggerMock.svg'></a>|
 
+# Features
+- MVP architecture based on Mosby.
+- Presenters that survive configuration changes.
+- Dagger 2 dependency injection.
+- Separated Dagger modules, scopes for presenters.
+- Repository pattern for data managing.
+- Local data storage: Realm.
+- Handling no internet connection issue. Loading data from local storage.
+- Unit tests.
+
 # License
 
 ```
