@@ -2,13 +2,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'realm-android'
 
-def versionMajor = 0
-def versionMinor = 0
-def versionPatch = 1
-def versionBuild = 0
-
 android {
-    compileSdkVersion 25
+    compileSdkVersion COMPILE_SDK_VERSION
     buildToolsVersion "25.0.3"
 
     packagingOptions {
@@ -25,10 +20,10 @@ android {
 
     defaultConfig {
         applicationId "com.szymongrochowiak.androidstarterpack"
-        minSdkVersion 16
-        targetSdkVersion 25
-        versionCode versionMajor * 10**4 + versionMinor * 10**3 + versionPatch * 10**2 + versionBuild
-        versionName "${versionMajor}.${versionMinor}.${versionPatch}"
+        minSdkVersion MIN_SDK_VERSION
+        targetSdkVersion TARGET_SDK_VERSION
+        versionCode VERSION_MAJOR * 10**4 + VERSION_MINOR * 10**3 + VERSION_PATCH * 10**2 + VERSION_BUILD
+        versionName "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
@@ -86,56 +81,56 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     // Support library
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.android.support:support-annotations:25.3.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile "com.android.support:appcompat-v7:$SUPPORT_LIB_VERSION"
+    compile "com.android.support:design:$SUPPORT_LIB_VERSION"
+    compile "com.android.support:support-annotations:$SUPPORT_LIB_VERSION"
+    compile "com.android.support.constraint:constraint-layout:$CONSTRAINT_LAYOUT_VERSION"
 
     // Mosby
-    compile 'com.hannesdorfmann.mosby3:mvp:3.0.3'
+    compile "com.hannesdorfmann.mosby3:mvp:$MOSBY_MVP_VERSION"
 
     // Dagger 2
-    compile 'com.google.dagger:dagger:2.10'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.10'
+    compile "com.google.dagger:dagger:$DAGGER_VERSION"
+    annotationProcessor "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
 
     // Gson
-    compile 'com.google.code.gson:gson:2.8.0'
+    compile "com.google.code.gson:gson:$GSON_VERSION"
 
     // RxJava
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    compile 'io.reactivex.rxjava2:rxjava:2.0.9'
+    compile "io.reactivex.rxjava2:rxandroid:$RX_ANDROID_VERSION"
+    compile "io.reactivex.rxjava2:rxjava:$RX_JAVA_VERSION"
 
     // OkHttp
-    compile 'com.squareup.okhttp3:okhttp:3.7.0'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.7.0'
+    compile "com.squareup.okhttp3:okhttp:$OK_HTTP_VERSION"
+    compile "com.squareup.okhttp3:logging-interceptor:$OK_HTTP_VERSION"
 
     // Retrofit
-    compile 'com.squareup.retrofit2:retrofit:2.2.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
-    compile 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
+    compile "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
+    compile "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$RETROFIT_VERSION"
 
     // Butterknife
-    compile 'com.jakewharton:butterknife:8.5.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    compile "com.jakewharton:butterknife:$BUTTERKNIFE_VERSION"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$BUTTERKNIFE_VERSION"
 
     // Timber
-    compile 'com.jakewharton.timber:timber:4.5.1'
+    compile "com.jakewharton.timber:timber:$TIMBER_VERSION"
 
     // Test libraries
-    testCompile 'junit:junit:4.12'
-    testCompile 'org.mockito:mockito-core:2.7.22'
-    testCompile 'com.github.fabioCollini:DaggerMock:0.6.4'
+    testCompile "junit:junit:$JUNIT_VERSION"
+    testCompile "org.mockito:mockito-core:$MOCKITO_VERSION"
+    testCompile "com.github.fabioCollini:DaggerMock:$DAGGER_MOCK_VERSION"
 
     // Android test libraries
-    androidTestCompile('com.android.support.test:runner:0.5', {
+    androidTestCompile("com.android.support.test:runner:$SUPPORT_TEST_LIB_VERSION", {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    androidTestCompile('com.android.support.test:rules:0.5', {
+    androidTestCompile("com.android.support.test:rules:$SUPPORT_TEST_LIB_VERSION", {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    androidTestCompile 'org.hamcrest:hamcrest-library:1.3'
+    androidTestCompile "org.hamcrest:hamcrest-library:$HAMCREST_VERSION"
 
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestCompile("com.android.support.test.espresso:espresso-core:$ESPRESSO_VERSION", {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.google.code.findbugs'
     })
