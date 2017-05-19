@@ -134,4 +134,6 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.google.code.findbugs'
     })
+
+    androidTestCompile "com.android.support.test.uiautomator:uiautomator-v18:$UI_AUTOMATOR_VERSION"
 }

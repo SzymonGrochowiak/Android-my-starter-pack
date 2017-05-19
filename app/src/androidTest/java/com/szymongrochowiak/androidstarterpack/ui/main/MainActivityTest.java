@@ -1,19 +1,21 @@
-package com.szymongrochowiak.androidstarterpack;
+package com.szymongrochowiak.androidstarterpack.ui.main;
 
 import android.support.test.rule.ActivityTestRule;
 
-import com.szymongrochowiak.androidstarterpack.ui.main.MainActivity;
+import com.szymongrochowiak.androidstarterpack.test.utils.DisableAnimationsRule;
 
 import org.junit.Assert;
+import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
 
 /**
  * @author Szymon Grochowiak
  */
-
 public class MainActivityTest {
 
+    @ClassRule
+    public static DisableAnimationsRule disableAnimationsRule = new DisableAnimationsRule();
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class, false, false);
 
