@@ -87,7 +87,7 @@ dependencies {
     compile "com.android.support.constraint:constraint-layout:$CONSTRAINT_LAYOUT_VERSION"
 
     // Mosby
-    compile "com.hannesdorfmann.mosby3:mvp:$MOSBY_MVP_VERSION"
+    compile "com.hannesdorfmann.mosby3:mvp:$rootProject.ext.MOSBY_MVP_VERSION"
 
     // Dagger 2
     compile "com.google.dagger:dagger:$DAGGER_VERSION"
@@ -129,11 +129,10 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     androidTestCompile "org.hamcrest:hamcrest-library:$HAMCREST_VERSION"
-
     androidTestCompile("com.android.support.test.espresso:espresso-core:$ESPRESSO_VERSION", {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.google.code.findbugs'
     })
-
     androidTestCompile "com.android.support.test.uiautomator:uiautomator-v18:$UI_AUTOMATOR_VERSION"
+    androidTestCompile "com.squareup.okhttp3:mockwebserver:$OK_HTTP_VERSION"
 }

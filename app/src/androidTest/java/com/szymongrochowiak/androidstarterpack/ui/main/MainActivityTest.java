@@ -3,6 +3,7 @@ package com.szymongrochowiak.androidstarterpack.ui.main;
 import android.support.test.rule.ActivityTestRule;
 
 import com.szymongrochowiak.androidstarterpack.test.utils.DisableAnimationsRule;
+import com.szymongrochowiak.androidstarterpack.test.utils.RxJavaImmediateSchedulersRule;
 
 import org.junit.Assert;
 import org.junit.ClassRule;
@@ -20,7 +21,7 @@ public class MainActivityTest {
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class, false, false);
 
     @Test
-    public void testBerry() throws Exception {
+    public void show_content() throws Exception {
         mActivityTestRule.launchActivity(null);
         Thread.sleep(5000);
         Assert.assertEquals(1, 0);
