@@ -45,6 +45,6 @@ public class MainActivityTest {
         mActivityTestRule.launchActivity(null);
 
         onView(withId(R.id.progressBar)).check(matches(not(isDisplayed())));
-        onView(withId(R.id.textView)).check(matches(withText("mock leppa")));
+        onView(withId(R.id.berryTextView)).check(matches(withText("mock leppa")));
     }
 }

@@ -38,7 +38,7 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter>
     @NonNull
     private MainComponent mMainComponent;
 
-    @BindView(R.id.textView)
+    @BindView(R.id.berryTextView)
     TextView mTextView;
     @BindView(R.id.progressBar)
     ProgressBar mProgressBar;

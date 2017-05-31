@@ -15,7 +15,7 @@
     tools:showIn="@layout/app_bar_main">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/berryTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Leppa"/>
