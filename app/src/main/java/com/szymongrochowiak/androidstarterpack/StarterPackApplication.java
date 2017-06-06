@@ -3,7 +3,11 @@ package com.szymongrochowiak.androidstarterpack;
 import android.app.Application;
 
 import com.szymongrochowiak.androidstarterpack.dagger.ApplicationComponent;
+import com.szymongrochowiak.androidstarterpack.dagger.ApplicationModule;
 import com.szymongrochowiak.androidstarterpack.dagger.DaggerApplicationComponent;
+import com.szymongrochowiak.androidstarterpack.dagger.LocalDataModule;
+import com.szymongrochowiak.androidstarterpack.dagger.NetworkingModule;
+import com.szymongrochowiak.androidstarterpack.dagger.RepositoryModule;
 
 import io.reactivex.plugins.RxJavaPlugins;
 import io.realm.Realm;
@@ -13,6 +17,8 @@ import timber.log.Timber;
  * @author Szymon Grochowiak
  */
 public class StarterPackApplication extends Application {
+
+    public static final String BASE_ENDPOINT = "http://pokeapi.co/api/v2/";
 
     private ApplicationComponent mDaggerComponent;
 
@@ -31,6 +37,10 @@ public class StarterPackApplication extends Application {
 
     private void initDaggerComponent() {
         mDaggerComponent = DaggerApplicationComponent.builder()
+                .applicationModule(new ApplicationModule(this))
+                .localDataModule(new LocalDataModule())
+                .networkingModule(new NetworkingModule())
+                .repositoryModule(new RepositoryModule())
                 .build();
     }
 
@@ -42,6 +52,10 @@ public class StarterPackApplication extends Application {
 
     private void initRxJava() {
         RxJavaPlugins.setErrorHandler(throwable -> Timber.e(throwable, "RxError"));
+    }
+
+    public String getApiEndpoint() {
+        return BASE_ENDPOINT;
     }
 
     public ApplicationComponent getDaggerApplicationComponent() {

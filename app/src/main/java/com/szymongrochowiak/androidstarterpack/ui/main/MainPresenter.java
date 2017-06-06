@@ -8,8 +8,6 @@ import com.szymongrochowiak.androidstarterpack.data.RepositoryLifecycle;
 import com.szymongrochowiak.androidstarterpack.data.model.Berry;
 import com.szymongrochowiak.androidstarterpack.ui.common.mvp.BasePresenter;
 
-import java.util.Random;
-
 import io.reactivex.disposables.Disposable;
 
 /**

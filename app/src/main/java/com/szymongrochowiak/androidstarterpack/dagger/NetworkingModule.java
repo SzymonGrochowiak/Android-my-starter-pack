@@ -5,6 +5,7 @@ import android.app.Application;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.szymongrochowiak.androidstarterpack.StarterPackApplication;
 import com.szymongrochowiak.androidstarterpack.data.local.LocalRepository;
 import com.szymongrochowiak.androidstarterpack.data.network.ApiInterface;
 import com.szymongrochowiak.androidstarterpack.data.network.NetworkRepository;
@@ -26,7 +27,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class NetworkingModule {
 
-    public static final String BASE_ENDPOINT = "http://pokeapi.co/api/v2/";
     public static final int CACHE_SIZE_MB = 40 * 1024 * 1024;  // 40 MB
 
     @Provides
@@ -52,11 +52,12 @@ public class NetworkingModule {
 
     @Provides
     @Singleton
-    protected Retrofit provideRetrofit(Gson gson, OkHttpClient okHttpClient) {
+    protected Retrofit provideRetrofit(StarterPackApplication application, Gson gson, OkHttpClient okHttpClient) {
+        final String endpoint = application.getApiEndpoint();
         return new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .baseUrl(BASE_ENDPOINT)
+                .baseUrl(endpoint)
                 .client(okHttpClient)
                 .build();
     }
