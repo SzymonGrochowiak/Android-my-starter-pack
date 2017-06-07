@@ -1,11 +1,9 @@
 package com.szymongrochowiak.androidstarterpack.ui.main;
 
-import android.support.test.espresso.Espresso;
 import android.support.test.rule.ActivityTestRule;
 
 import com.szymongrochowiak.androidstarterpack.R;
 import com.szymongrochowiak.androidstarterpack.test.utils.DisableAnimationsRule;
-import com.szymongrochowiak.androidstarterpack.test.utils.RxIdlingResource;
 
 import org.junit.Before;
 import org.junit.ClassRule;
@@ -13,7 +11,6 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import io.appflate.restmock.RESTMockServer;
-import io.reactivex.plugins.RxJavaPlugins;
 import okhttp3.mockwebserver.MockResponse;
 
 import static android.support.test.espresso.Espresso.onView;
@@ -40,9 +37,6 @@ public class MainActivityTest {
     @Before
     public void before() {
         RESTMockServer.reset();
-        RxIdlingResource rxIdlingResource = new RxIdlingResource();
-        Espresso.registerIdlingResources(rxIdlingResource);
-        RxJavaPlugins.setScheduleHandler(rxIdlingResource);
     }
 
     @Test
