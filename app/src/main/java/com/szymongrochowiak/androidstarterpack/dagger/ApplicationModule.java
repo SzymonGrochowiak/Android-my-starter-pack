@@ -1,7 +1,5 @@
 package com.szymongrochowiak.androidstarterpack.dagger;
 
-import android.app.Application;
-
 import com.szymongrochowiak.androidstarterpack.StarterPackApplication;
 
 import javax.inject.Singleton;

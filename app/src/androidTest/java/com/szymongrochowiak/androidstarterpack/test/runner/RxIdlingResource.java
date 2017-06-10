@@ -1,4 +1,4 @@
-package com.szymongrochowiak.androidstarterpack.test.utils;
+package com.szymongrochowiak.androidstarterpack.test.runner;
 
 import android.support.test.espresso.IdlingResource;
 

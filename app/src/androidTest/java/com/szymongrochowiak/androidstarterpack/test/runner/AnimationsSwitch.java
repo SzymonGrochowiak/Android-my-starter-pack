@@ -1,4 +1,4 @@
-package com.szymongrochowiak.androidstarterpack.test.utils;
+package com.szymongrochowiak.androidstarterpack.test.runner;
 
 import android.app.Instrumentation;
 import android.content.Context;
@@ -7,10 +7,6 @@ import android.os.IBinder;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.uiautomator.UiDevice;
 
-import org.junit.rules.TestRule;
-import org.junit.runner.Description;
-import org.junit.runners.model.Statement;
-
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -18,7 +14,7 @@ import java.util.Arrays;
 /**
  * @author Szymon Grochowiak
  */
-public class DisableAnimationsRule implements TestRule {
+public class AnimationsSwitch {
 
     private final static String SET_ANIMATION_SCALE_PERMISSION = "android.permission.SET_ANIMATION_SCALE";
     private final static String GRANT_PERMISSION_COMMAND = "pm grant %s %s";
@@ -30,24 +26,24 @@ public class DisableAnimationsRule implements TestRule {
     private Method mGetAnimationScalesMethod;
     private Object mWindowManagerObject;
 
-    public DisableAnimationsRule() {
+    public AnimationsSwitch() {
         reflectAnimationMethods();
     }
 
-    @Override
-    public Statement apply(final Statement statement, Description description) {
-        return new Statement() {
-            @Override
-            public void evaluate() throws Throwable {
-                grantSetAnimationScalePermission();
-                setAnimationScaleFactors(ANIMATION_DISABLED);
-                try {
-                    statement.evaluate();
-                } finally {
-                    setAnimationScaleFactors(ANIMATION_ENABLED);
-                }
-            }
-        };
+    public void turnOnAnimations() throws Exception {
+        try {
+            grantSetAnimationScalePermission();
+        } finally {
+            setAnimationScaleFactors(ANIMATION_ENABLED);
+        }
+    }
+
+    public void turnOffAnimations() throws Exception {
+        try {
+            grantSetAnimationScalePermission();
+        } finally {
+            setAnimationScaleFactors(ANIMATION_DISABLED);
+        }
     }
 
     private void setAnimationScaleFactors(float scaleFactor) throws Exception {

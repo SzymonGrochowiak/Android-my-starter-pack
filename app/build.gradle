@@ -25,7 +25,7 @@ android {
         versionCode VERSION_MAJOR * 10**4 + VERSION_MINOR * 10**3 + VERSION_PATCH * 10**2 + VERSION_BUILD
         versionName "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}"
 
-        testInstrumentationRunner "com.szymongrochowiak.androidstarterpack.test.CustomTestRunner"
+        testInstrumentationRunner "com.szymongrochowiak.androidstarterpack.test.runner.CustomTestRunner"
         vectorDrawables.useSupportLibrary = true
     }
 
