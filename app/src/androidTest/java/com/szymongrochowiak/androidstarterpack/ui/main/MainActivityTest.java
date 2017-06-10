@@ -16,6 +16,8 @@ import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static com.szymongrochowiak.androidstarterpack.test.utils.HttpTestUtils.HTTP_CODE_FAIL_AUTHORIZATION;
+import static com.szymongrochowiak.androidstarterpack.test.utils.HttpTestUtils.HTTP_CODE_SUCCESS;
 import static io.appflate.restmock.RESTMockServer.whenGET;
 import static io.appflate.restmock.RequestsVerifier.verifyRequest;
 import static io.appflate.restmock.utils.RequestMatchers.pathContains;
@@ -36,13 +38,7 @@ public class MainActivityTest {
 
     @Test
     public void show_content() throws Exception {
-        whenGET(pathContains("berry")).thenReturnString(200, "{\"natural_gift_type\":{\"url\":\"http:\\/\\/pokeapi" +
-                ".co\\/api\\/v2\\/type\\/2\\/\",\"name\":\"fighting\"},\"name\":\"mock berry\"," +
-                "\"max_harvest\":5,\"soil_dryness\":15,\"smoothness\":20," +
-                "\"item\":{\"url\":\"http:\\/\\/pokeapi.co\\/api\\/v2\\/item\\/131\\/\"," +
-                "\"name\":\"leppa-berry\"},\"firmness\":{\"url\":\"http:\\/\\/pokeapi" +
-                ".co\\/api\\/v2\\/berry-firmness\\/4\\/\",\"name\":\"very-hard\"},\"growth_time\":4,\"id\":6," +
-                "\"size\":28}");
+        whenGET(pathContains("berry")).thenReturnFile(HTTP_CODE_SUCCESS, "berry.json");
 
         mActivityTestRule.launchActivity(null);
 
@@ -55,7 +51,7 @@ public class MainActivityTest {
     @Test
     public void show_error() throws Exception {
         MockResponse errorResponse = new MockResponse();
-        errorResponse.setResponseCode(401);
+        errorResponse.setResponseCode(HTTP_CODE_FAIL_AUTHORIZATION);
         errorResponse.setBody("Unauthorized exception");
         whenGET(pathContains("berry")).thenReturn(errorResponse);
 

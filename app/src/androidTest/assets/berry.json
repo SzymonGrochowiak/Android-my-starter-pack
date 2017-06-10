@@ -1,0 +1,21 @@
+{
+  "natural_gift_type": {
+    "url": "http://pokeapi.co/api/v2/type/2/",
+    "name": "fighting"
+  },
+  "name": "mock berry",
+  "max_harvest": 5,
+  "soil_dryness": 15,
+  "smoothness": 20,
+  "item": {
+    "url": "http://pokeapi.co/api/v2/item/131/",
+    "name": "leppa-berry"
+  },
+  "firmness": {
+    "url": "http://pokeapi.co/api/v2/berry-firmness/4/",
+    "name": "very-hard"
+  },
+  "growth_time": 4,
+  "id": 6,
+  "size": 28
+}
