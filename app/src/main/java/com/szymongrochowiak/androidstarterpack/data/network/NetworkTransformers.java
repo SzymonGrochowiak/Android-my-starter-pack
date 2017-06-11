@@ -21,7 +21,7 @@ class NetworkTransformers {
     }
 
     @NonNull
-    public static <T> ObservableTransformer<T, T> applyTransformations(
+    static <T> ObservableTransformer<T, T> applyTransformations(
             List<ObservableTransformer<T, T>> transformers) {
         return observable -> {
             for (ObservableTransformer<T, T> transformer : transformers) {
@@ -32,13 +32,13 @@ class NetworkTransformers {
     }
 
     @NonNull
-    public static <T> ObservableTransformer<T, T> applySchedulers() {
+    static <T> ObservableTransformer<T, T> applySchedulers() {
         return observable -> observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
     @NonNull
-    public static <T> ObservableTransformer<T, T> applyOnErrorResumeNext() {
+    static <T> ObservableTransformer<T, T> applyOnErrorResumeNext() {
         return observable -> observable.onErrorResumeNext(throwable -> {
             if (throwable instanceof IOException) {
                 return Observable.empty();
@@ -48,10 +48,15 @@ class NetworkTransformers {
     }
 
     @NonNull
-    public static <T> ObservableTransformer<T, T> applySaveLocally(RepositoryWriter repositoryWriter) {
+    static <T> ObservableTransformer<T, T> applySaveLocally(RepositoryWriter repositoryWriter) {
         return observable -> observable.map(object -> {
             T savedObject = repositoryWriter.saveToRepository(object);
             return savedObject == null ? object : savedObject;
         });
+    }
+
+    @NonNull
+    static <T> ObservableTransformer<T, T> applyConnectionRetires(int connectionRetries) {
+        return observable -> observable.retry(connectionRetries);
     }
 }

@@ -27,7 +27,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class NetworkingModule {
 
-    public static final int CACHE_SIZE_MB = 40 * 1024 * 1024;  // 40 MB
+    private static final int CACHE_SIZE_MB = 40 * 1024 * 1024;  // 40 MB
+    private static final int CONNECTION_RETRIES = 2;
 
     @Provides
     @Singleton
@@ -65,6 +66,7 @@ public class NetworkingModule {
     @Provides
     @Singleton
     protected NetworkRepository provideNetworkRepository(LocalRepository localRepository, Retrofit retrofit) {
-        return new NetworkRepository(localRepository.getLocalRepositoryWriter(), retrofit.create(ApiInterface.class));
+        return new NetworkRepository(localRepository.getLocalRepositoryWriter(), retrofit.create(ApiInterface.class),
+                CONNECTION_RETRIES);
     }
 }

@@ -12,6 +12,7 @@ import java.util.List;
 import io.reactivex.Observable;
 import io.reactivex.ObservableTransformer;
 
+import static com.szymongrochowiak.androidstarterpack.data.network.NetworkTransformers.applyConnectionRetires;
 import static com.szymongrochowiak.androidstarterpack.data.network.NetworkTransformers.applyOnErrorResumeNext;
 import static com.szymongrochowiak.androidstarterpack.data.network.NetworkTransformers.applySaveLocally;
 import static com.szymongrochowiak.androidstarterpack.data.network.NetworkTransformers.applySchedulers;
@@ -26,15 +27,21 @@ public class NetworkRepository implements Repository {
     private RepositoryWriter mRepositoryWriter;
     @NonNull
     private ApiInterface mApiInterface;
+    private final int mConnectionRetries;
 
-    public NetworkRepository(@NonNull RepositoryWriter repositoryWriter, @NonNull ApiInterface apiInterface) {
+    public NetworkRepository(@NonNull RepositoryWriter repositoryWriter, @NonNull ApiInterface apiInterface,
+                             int connectionRetries) {
         mRepositoryWriter = repositoryWriter;
         mApiInterface = apiInterface;
+        mConnectionRetries = connectionRetries;
     }
 
     private <T> ObservableTransformer<T, T> applyRequestTransformations() {
         List<ObservableTransformer<T, T>> transformerList =
-                Arrays.asList(applySchedulers(), applyOnErrorResumeNext(), applySaveLocally(mRepositoryWriter));
+                Arrays.asList(applySchedulers(),
+                        applyConnectionRetires(mConnectionRetries),
+                        applyOnErrorResumeNext(),
+                        applySaveLocally(mRepositoryWriter));
         return applyTransformations(transformerList);
     }
 

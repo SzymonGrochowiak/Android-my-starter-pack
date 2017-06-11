@@ -4,6 +4,7 @@ import android.support.test.rule.ActivityTestRule;
 
 import com.szymongrochowiak.androidstarterpack.R;
 
+import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -27,6 +28,8 @@ import static org.hamcrest.CoreMatchers.not;
  * @author Szymon Grochowiak
  */
 public class MainActivityTest {
+
+    public static final int REQUEST_INVOCATIONS = 3;
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class, false, false);
@@ -58,7 +61,9 @@ public class MainActivityTest {
         mActivityTestRule.launchActivity(null);
 
         onView(withId(R.id.progressBar)).check(matches(not(isDisplayed())));
+        onView(withId(R.id.berryTextView)).check(
+                matches(withText(Matchers.containsString(HTTP_CODE_FAIL_AUTHORIZATION + ""))));
 
-        verifyRequest(pathContains("berry")).invoked();
+        verifyRequest(pathContains("berry")).exactly(REQUEST_INVOCATIONS);
     }
 }
