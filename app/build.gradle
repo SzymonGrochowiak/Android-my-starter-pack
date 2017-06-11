@@ -29,6 +29,10 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
 
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
     /* TODO #1 #2 This should be uncommented when keys will be attached to the project, uncomment for build types
     signingConfigs {
          // TODO #1 add debug key to the project

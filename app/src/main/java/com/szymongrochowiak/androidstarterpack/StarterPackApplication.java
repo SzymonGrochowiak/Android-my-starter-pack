@@ -3,7 +3,6 @@ package com.szymongrochowiak.androidstarterpack;
 import android.app.Application;
 
 import com.szymongrochowiak.androidstarterpack.dagger.ApplicationComponent;
-import com.szymongrochowiak.androidstarterpack.dagger.ApplicationModule;
 import com.szymongrochowiak.androidstarterpack.dagger.DaggerApplicationComponent;
 import com.szymongrochowiak.androidstarterpack.dagger.LocalDataModule;
 import com.szymongrochowiak.androidstarterpack.dagger.NetworkingModule;
@@ -37,9 +36,8 @@ public class StarterPackApplication extends Application {
 
     private void initDaggerComponent() {
         mDaggerComponent = DaggerApplicationComponent.builder()
-                .applicationModule(new ApplicationModule(this))
                 .localDataModule(new LocalDataModule())
-                .networkingModule(new NetworkingModule())
+                .networkingModule(new NetworkingModule(getApiEndpoint()))
                 .repositoryModule(new RepositoryModule())
                 .build();
     }

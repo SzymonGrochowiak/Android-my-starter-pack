@@ -9,7 +9,8 @@ import org.mockito.verification.VerificationMode;
 
 public class TestUtils {
 
-    // no instance of this class
+    public static final String TEST_URL = "http://pokeapi.co/api/v2/";
+
     private TestUtils() {
     }
 

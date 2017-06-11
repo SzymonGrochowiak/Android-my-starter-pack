@@ -1,6 +1,6 @@
 package com.szymongrochowiak.androidstarterpack.dagger;
 
-import com.szymongrochowiak.androidstarterpack.StarterPackApplication;
+import android.app.Application;
 
 import javax.inject.Singleton;
 
@@ -13,15 +13,15 @@ import dagger.Provides;
 @Module
 public class ApplicationModule {
 
-    private StarterPackApplication mApplication;
+    private Application mApplication;
 
-    public ApplicationModule(StarterPackApplication application) {
+    public ApplicationModule(Application application) {
         mApplication = application;
     }
 
     @Provides
     @Singleton
-    protected StarterPackApplication providesStarterPackApplication() {
+    protected Application providesStarterPackApplication() {
         return mApplication;
     }
 }

@@ -1,11 +1,11 @@
 package com.szymongrochowiak.androidstarterpack.dagger;
 
 import android.app.Application;
+import android.support.annotation.NonNull;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.szymongrochowiak.androidstarterpack.StarterPackApplication;
 import com.szymongrochowiak.androidstarterpack.data.local.LocalRepository;
 import com.szymongrochowiak.androidstarterpack.data.network.ApiInterface;
 import com.szymongrochowiak.androidstarterpack.data.network.NetworkRepository;
@@ -29,6 +29,12 @@ public class NetworkingModule {
 
     private static final int CACHE_SIZE_MB = 40 * 1024 * 1024;  // 40 MB
     private static final int CONNECTION_RETRIES = 2;
+    @NonNull
+    private final String mEndpoint;
+
+    public NetworkingModule(@NonNull String endpoint) {
+        mEndpoint = endpoint;
+    }
 
     @Provides
     @Singleton
@@ -53,12 +59,11 @@ public class NetworkingModule {
 
     @Provides
     @Singleton
-    protected Retrofit provideRetrofit(StarterPackApplication application, Gson gson, OkHttpClient okHttpClient) {
-        final String endpoint = application.getApiEndpoint();
+    protected Retrofit provideRetrofit(Gson gson, OkHttpClient okHttpClient) {
         return new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .baseUrl(endpoint)
+                .baseUrl(mEndpoint)
                 .client(okHttpClient)
                 .build();
     }

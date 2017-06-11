@@ -1,6 +1,7 @@
 package com.szymongrochowiak.androidstarterpack.ui.main;
 
 import com.szymongrochowiak.androidstarterpack.dagger.ApplicationComponent;
+import com.szymongrochowiak.androidstarterpack.dagger.NetworkingModule;
 import com.szymongrochowiak.androidstarterpack.dagger.RepositoryModule;
 import com.szymongrochowiak.androidstarterpack.data.ApplicationRepository;
 import com.szymongrochowiak.androidstarterpack.data.Repository;
@@ -16,6 +17,7 @@ import org.mockito.Mock;
 import io.reactivex.Observable;
 import it.cosenonjaviste.daggermock.DaggerMockRule;
 
+import static com.szymongrochowiak.androidstarterpack.test.utils.TestUtils.TEST_URL;
 import static com.szymongrochowiak.androidstarterpack.test.utils.TestUtils.onlyOnce;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.spy;
@@ -38,7 +40,8 @@ public class MainPresenterTest {
 
     @Rule
     public DaggerMockRule<ApplicationComponent> mDaggerRule =
-            new DaggerMockRule<>(ApplicationComponent.class, new RepositoryModule()).set(
+            new DaggerMockRule<>(ApplicationComponent.class, new NetworkingModule(TEST_URL),
+                    new RepositoryModule()).set(
                     new DaggerMockRule.ComponentSetter<ApplicationComponent>() {
                         @Override
                         public void setComponent(ApplicationComponent component) {
