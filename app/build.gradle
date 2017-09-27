@@ -4,7 +4,7 @@ apply plugin: 'realm-android'
 
 android {
     compileSdkVersion COMPILE_SDK_VERSION
-    buildToolsVersion "26.0.0"
+    buildToolsVersion "26.0.1"
 
     packagingOptions {
         exclude 'META-INF/LICENSE.txt'
@@ -75,6 +75,19 @@ android {
         }
     }
 
+    sourceSets {
+        def commonMocks = 'src/commonTest/assets'
+        test {
+            resources.srcDirs commonMocks
+        }
+        androidTest {
+            assets.srcDirs commonMocks
+        }
+        mock {
+            assets.srcDirs commonMocks
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -139,7 +152,7 @@ dependencies {
     })
     androidTestCompile "com.android.support.test.uiautomator:uiautomator-v18:$UI_AUTOMATOR_VERSION"
     androidTestCompile "com.squareup.okhttp3:mockwebserver:$OK_HTTP_VERSION"
-    androidTestCompile('com.github.andrzejchm.RESTMock:android:0.2.1', {
+    androidTestCompile('com.github.andrzejchm.RESTMock:android:0.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 }

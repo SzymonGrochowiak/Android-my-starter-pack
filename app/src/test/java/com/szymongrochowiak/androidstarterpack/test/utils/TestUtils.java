@@ -6,7 +6,6 @@ import org.mockito.verification.VerificationMode;
 /**
  * @author Szymon Grochowiak
  */
-
 public class TestUtils {
 
     public static final String TEST_URL = "http://pokeapi.co/api/v2/";

@@ -17,13 +17,19 @@ import timber.log.Timber;
  */
 public class StarterPackApplication extends Application {
 
+    private static StarterPackApplication sInstance;
     public static final String BASE_ENDPOINT = "http://pokeapi.co/api/v2/";
 
     private ApplicationComponent mDaggerComponent;
 
+    public static StarterPackApplication getInstance() {
+        return sInstance;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
+        sInstance = this;
         initRealm();
         initDaggerComponent();
         initTimber();
